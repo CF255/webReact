@@ -1,0 +1,45 @@
+
+.articleperfil{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: .8rem;
+}
+
+.articleperfil .headerperfil{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.articleperfil .headerperfil .containerperfiltext{
+    display: flex;
+    flex-direction: column;
+}
+
+.articleperfil .headerperfil .spusernameperfil{
+    opacity: .6;
+}
+
+.articleperfil .imgperfil{
+    width: 35px;
+    height: 35px;
+    border-radius: 1000px;
+}
+
+
+
+
+/* @media (max-width: 600px) {
+
+    .articleperfil{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    } */
+    
+    
+    
+
