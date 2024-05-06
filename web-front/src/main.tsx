@@ -11,6 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import TresEnRaya from './routes/TresEnRaya.jsx'
 import ApiPelis from './routes/ApiPelis.jsx'
+import Giffy from './routes/Giffy.jsx'
 
 const router = createBrowserRouter([
 
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
     {
       path:"/apipelis",
       element: <ApiPelis/>
+    },
+    {
+      path:"/giffy",
+      element: <Giffy/>
+    },
+    {
+      path:"/giffy/gif/:id",
+      element:<Giffy/>
     }
   ]
 }

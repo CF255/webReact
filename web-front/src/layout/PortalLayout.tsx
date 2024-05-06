@@ -3,8 +3,8 @@ import { useAuth } from "../auth/AuthProvider";
 import { Link } from "react-router-dom";
 import { API_URL } from "../auth/constants";
 import '../../public/css/portallayout.css'
-import BurgerButton from  '../components/BurgerButton'
-import PerfilInformation from "../components/PerfilInformation";
+import BurgerButton from  '../components/PortalLayout/BurgerButton'
+import PerfilInformation from "../components/PortalLayout/PerfilInformation";
 
 
 export default function PortalLayout({children}: {children: React.ReactNode}){
@@ -44,34 +44,44 @@ export default function PortalLayout({children}: {children: React.ReactNode}){
 
     return(
         <>
+        <div className="headerfixed">
         <header className="navcontainer">
+
             <Link to={"/dashboard"}>
             <img className="logo" src="/img/logo.png" alt="" />
             </Link>
-            <nav>
+            <nav className="navPortalLayaout">
                 <ul className={`links ${clicked? 'active' : ''}`}>
-                    <li>
-                        <Link  to="/dasboard">...</Link>
+                    <li className="liPortalLayaout">
+                        <Link className="aroutes" to="/dasboard">...</Link>
                     </li>
-                    <li>
-                        <Link  to="/me">...</Link>
+                    <li className="liPortalLayaout ">
+                        <Link className="aroutes"  to="/me">...</Link>
                     </li>
-                    <li className="liperfil">
+                    <li className="liPortalLayaout liperfil">
                     <PerfilInformation />
                     </li>
-                    <li>
-                        <a className="btnsignout" href="#" onClick={handleSignOut}>sign out</a>
+                    <li className="liPortalLayaout">
+                        <a className="btnsignout"  onClick={handleSignOut}>sign out</a>
                     </li>
 
+
                 </ul>
+
+              
 
                 <div className="burgerbtn" onClick={handleaMenu}>
                 <BurgerButton/>
                 </div>
         
             </nav>
+
+           
           
         </header>
+        </div>
+
+
         <div>
         <div className={`initial ${clicked? 'active' : ''}`}></div>
         <div className={`circulo1 ${clicked? 'active' : ''}`}></div>

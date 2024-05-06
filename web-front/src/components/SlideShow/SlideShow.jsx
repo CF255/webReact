@@ -3,12 +3,12 @@ import FlechaIz from '/img/left-lined.svg'
 import FlechaDe from '/img/right-lined.svg'
 import { useRef, useEffect, useCallback, useState} from 'react'
 import styled from 'styled-components'
-import '../../public/css/slideshow.css'
+import '/public/css/slideshow.css'
 
 
 
 const SlideShow = ({
-    children,
+    children ,
     controles = false,
     autoplay = false,
     speedSlide="800",

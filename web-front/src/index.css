@@ -8,3 +8,16 @@
     font-family: "Poppins", sans-serif;
 }
 
+main{
+    max-width: 1500px;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+
+@media (max-width: 870px) {
+    main{
+        margin: 0px auto;
+   
+    }
+}

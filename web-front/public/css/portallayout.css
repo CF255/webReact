@@ -2,6 +2,13 @@
 width: 40px;
 }
 
+.headerfixed{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 101;
+}
+
 
 .navcontainer{
     padding: .4rem;
@@ -9,26 +16,25 @@ width: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
     width: 100%;
     z-index: 100;
     top: 0;
 }
 
 
-nav{
+.navPortalLayaout{
     display: flex;
     align-items: center;
+   
 }
 
-nav ul{
+.navPortalLayaout .links{
  display: flex;
  align-items: center;
  
 }
  
-nav ul li{
-    color: #fff;
+.navPortalLayaout .links .liPortalLayaout{
     list-style: none;
     margin-right: 1rem;
 }
@@ -38,24 +44,25 @@ nav ul li{
 .links .logoperfil{
     width:40px;
 }
-nav ul li a{
+
+
+ .navPortalLayaout .links .liPortalLayaout .aroutes{
     color: #fff;
     text-decoration: none;
+} 
+
+
+ .btnsignout{
+  color: rgb(70, 77, 5);
+  background-color: rgb(196, 199, 138);
+  font-weight: bold;
+  border: 2px solid rgb(76, 81, 4);
+  border-radius: 5px;
+  padding: 5px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 
-
- 
-
-
-.btnsignout{
-    color: rgb(101, 112, 3);
-    background-color: rgb(244, 247, 185);
-    font-weight: bold;
-    border: 2px solid rgb(76, 81, 4);
-    border-radius: 5px;
-    padding: 5px;
-    transition: 0.3s ease-in-out;
-}
 
 
 .btnsignout:hover{
@@ -63,8 +70,7 @@ nav ul li a{
     background-color: rgb(247, 185, 185);
     font-weight: bold;
     border: 2px solid rgb(81, 4, 4);
-
-   
+  
 }
 
 
@@ -343,12 +349,22 @@ nav ul li a{
 
 
 @media (max-width: 870px) {
-    nav{
+
+  .headerfixed{
+    position: relative;
+  }
+
+
+
+
+    .navPortalLayaout{
         z-index: 19;
+
      }
-    
+
     .burgerbtn{
         display: flex;
+        right: 0;
     }
     .links{
           position: absolute;
@@ -369,7 +385,7 @@ nav ul li a{
       position: absolute;
       margin-left:auto ;
       margin-right: auto;
-      top: 25%;
+      top: 150px;
       left: 0;
       right: 0;
       text-align: center;
@@ -382,7 +398,7 @@ nav ul li a{
 
    
 
-    .links li{
+    .links .liPortalLayaout{
         padding: 15px;
         background: linear-gradient(-45deg, #12367e33, #040630);
         border: 2px solid #475107;
@@ -390,15 +406,17 @@ nav ul li a{
         border-radius: 5px;
         display: flex;
         justify-content: center;
+       
     }
 
-    .links li .btnsignout{
+    .links .liPortalLayaout .btnsignout{
         padding: 10px;
         background: linear-gradient(-45deg, #737e12, #2a3004);
         border: 2px solid #4e5809;
         margin: 0;
         border-radius: 5px;
         width: 100%;
+        color: #000;
       
     }
 
@@ -408,12 +426,8 @@ nav ul li a{
         color: rgb(255, 255, 255);
       }
 
-      .links.active .btnsignout{
-        color: #000;
-      }
 
-
-    .links li{
+    .links .liPortalLayaout{
         margin-top: 1rem;
     }
 

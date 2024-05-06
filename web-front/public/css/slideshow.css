@@ -84,7 +84,7 @@ right: 0;
 }
 
 @media (max-width: 1486px) {
-    
+   
 
     .slide img{
        height: 500px;
@@ -95,6 +95,8 @@ right: 0;
 
 @media (max-width: 700px) {
     
+    
+
     .textslide{
         position: relative;
     }
