@@ -1,6 +1,6 @@
 const express = require("express");
 const { jsonResponse } = require("../lib/jsonResponse");
-const log = require("../lib/trace");
+const log = require("../lib/Trace");
 const router = express.Router();
 
 router.get("/", async function (req, res, next) {

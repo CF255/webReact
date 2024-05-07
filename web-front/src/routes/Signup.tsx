@@ -70,7 +70,7 @@ const handleSign_in_btn = () =>{
   container?.classList.remove("sign-up-mode") 
 
     setTimeout(() => {
-        goTo("/")
+        goTo("/login")
     }, 1750);
 }
 

@@ -1,8 +1,9 @@
-const log = require("../lib/trace");
+const log = require("../lib/Trace");
 const validateToken = require("./validateToken");
-const { verifyAccessToken } = require("./verifyTokens");
+const { verifyAccessToken } = require("./verifyTokens"); 
 
-function authenticateToken(req, res, next) {
+
+ function AuthenticateToken(req, res, next) {
   let token = null;
   log.info("headers", req.headers);
   try {
@@ -29,4 +30,5 @@ function authenticateToken(req, res, next) {
   }
 }
 
-module.exports = authenticateToken;
+module.exports = AuthenticateToken; 
+

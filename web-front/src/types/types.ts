@@ -18,6 +18,7 @@ export interface AuthResponse {
     _id: string;
     name: string;
     username: string;
+    id: string;
   }
   
   export interface AccessTokenResponse {

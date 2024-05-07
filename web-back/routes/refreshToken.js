@@ -1,6 +1,6 @@
 const express = require("express");
 const { jsonResponse } = require("../lib/jsonResponse");
-const log = require("../lib/trace"); 
+const log = require("../lib/Trace"); 
 const { verifyRefreshToken } = require("../auth/verifyTokens");
 const { generateAccessToken } = require("../auth/generateTokens");
 const getUserInfo = require("../lib/getUserInfo");

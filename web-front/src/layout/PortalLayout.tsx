@@ -56,7 +56,7 @@ export default function PortalLayout({children}: {children: React.ReactNode}){
                         <Link className="aroutes" to="/dasboard">...</Link>
                     </li>
                     <li className="liPortalLayaout ">
-                        <Link className="aroutes"  to="/me">...</Link>
+                        <Link className="aroutes"  to="/">...</Link>
                     </li>
                     <li className="liPortalLayaout liperfil">
                     <PerfilInformation />

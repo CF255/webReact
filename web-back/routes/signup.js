@@ -6,6 +6,8 @@ const router = express.Router();
 router.post("/", async function (req, res, next) {
   const { username, password, name } = req.body;
 
+  console.log(req.file)
+
   if (!username || !password || !name) {
     //return next(new Error("username and password are required"));
     return res.status(409).json(

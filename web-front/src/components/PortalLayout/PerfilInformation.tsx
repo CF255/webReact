@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom'
 import '/img/logoperfil.png'
 import { useAuth } from '../../auth/AuthProvider'
-import '../../../public/css/perfilinformation.css'
+import '/public/css/perfilinformation.css'
 
 function PerfilInformation(){
 
@@ -13,10 +13,13 @@ function PerfilInformation(){
         <>
         <article className='articleperfil'>
             <header className='headerperfil'>
+                <Link className='aroutes'  to={`/perfil/${auth.getUser()?.id }`} >
                 <img className='imgperfil' src="/img/logoperfil.png"></img>
+                </Link>
+                
                 <div className='containerperfiltext'>
                     <strong className='stnombreperfil'>{auth.getUser()?.name || ""}</strong>
-                    <span className='spusernameperfil'><Link className='aroutes'  to="/me">@{auth.getUser()?.username ?? ""}</Link></span>
+                    <span className='spusernameperfil'>@{auth.getUser()?.username ?? ""}</span>
                 </div>
             </header>
         </article>

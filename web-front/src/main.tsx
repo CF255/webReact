@@ -12,11 +12,14 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import TresEnRaya from './routes/TresEnRaya.jsx'
 import ApiPelis from './routes/ApiPelis.jsx'
 import Giffy from './routes/Giffy.jsx'
+import Perfil from './routes/Perfil.jsx'
+
+
 
 const router = createBrowserRouter([
 
 {
-  path: "/",
+  path: "/login",
   element: <Login/>
 },
 {
@@ -46,6 +49,10 @@ const router = createBrowserRouter([
     {
       path:"/giffy/gif/:id",
       element:<Giffy/>
+    },
+    {
+      path:`/perfil/:id`,
+      element:<Perfil/>
     }
   ]
 }
