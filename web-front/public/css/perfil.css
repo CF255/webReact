@@ -1,12 +1,15 @@
 .seccion-perfil-usuario,
 .seccion-perfil-usuario .perfil-usuario-body{
-   margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
   
 }
+
+.seccion-perfil-usuario .perfil-usuario-body{
+    margin-top: 30px; 
+ }
 
 .seccion-perfil-usuario .perfil-usuario-header{
     width: 100%;
@@ -113,6 +116,8 @@
 .seccion-perfil-usuario .perfil-usuario-amigos{
     position: relative;
     gap: 20px;
+    max-height: 75px;
+    overflow: hidden;
 }
 
 .seccion-perfil-usuario .perfil-usuario-amigos h2{
@@ -122,6 +127,25 @@
     font-size: 1rem;
     color: #5c5c5c;
 }
+
+.seccion-perfil-usuario .perfil-usuario-amigos .btnmostrartodo{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: .6rem;
+    color: #5c5c5c;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.seccion-perfil-usuario .perfil-usuario-amigos .div-acciones-amigos{
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top: 0;
+   
+}
+
 
 
 .seccion-perfil-usuario .perfil-usuario-bio{

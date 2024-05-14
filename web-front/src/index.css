@@ -17,7 +17,6 @@ main{
 
 @media (max-width: 870px) {
     main{
-        margin: 0px auto;
-   
+        margin: 0 auto;
     }
 }

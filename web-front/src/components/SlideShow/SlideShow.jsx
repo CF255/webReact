@@ -67,7 +67,7 @@ const handlenext = useCallback(() => {
     }
 } 
 
-/* useEffect(() => {
+ useEffect(() => {
 
     var intervalos
 
@@ -92,10 +92,11 @@ const handlenext = useCallback(() => {
         });
     }
 }, [autoplay, intervalo, handlenext]);
- */
+ 
 
     return(
         <>
+         
         <div className='maincontainer' >
         <p className="ptitulo">SlideShow</p>
             <div className="slideshow" ref={slideshow}>

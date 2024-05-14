@@ -194,9 +194,13 @@ export default function Perfil(){
                 </div>
 
                 <div className="perfil-usuario-amigos">
-                 <h2>Amigos</h2>
+                  <div className="div-acciones-amigos">
+                  <h2>Amigos</h2>
+                 <a className="btnmostrartodo" href="#">Mostrar todo</a>
+                  </div>
+               
                  <Allusers/>
-
+                 
                 </div>
 
                 

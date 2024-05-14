@@ -50,7 +50,7 @@ export default function NamePerfils(){
 
           const id = useParams().id
           const user = users.find(a => a._id === String(id))
-            console.log(user)  
+          /*   console.log(user)   */
     
 
       return(
