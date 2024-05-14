@@ -28,8 +28,14 @@ UserSchema.pre("save", function (next) {
   }
 });
 
+
 UserSchema.methods.usernameExists = async function (username) {
   const result = await Mongoose.model("User").find({ username: username });
+  return result.length > 0;
+};
+
+UserSchema.methods.idExists = async function (id) {
+  const result = await Mongoose.model("User").find({_id: id });
   return result.length > 0;
 };
 

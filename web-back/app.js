@@ -23,7 +23,8 @@ app.use("/api/signup", require("./routes/signup"))
 app.use("/api/login", require("./routes/login"))
 app.use("/api/signout", require("./routes/signout"))
 app.use("/api/refresh-token", require("./routes/refreshToken"))
-app.use("/api/user", authenticate, require("./routes/user"))
+/* app.use("/api/user", authenticate,   require("./routes/user")) */
+app.use("/api/perfil",    authenticate,      require("./routes/perfil")) 
 
 app.get("/", (req, res)=>{
     res.send('hello')

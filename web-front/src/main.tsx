@@ -13,6 +13,9 @@ import TresEnRaya from './routes/TresEnRaya.jsx'
 import ApiPelis from './routes/ApiPelis.jsx'
 import Giffy from './routes/Giffy.jsx'
 import Perfil from './routes/Perfil.jsx'
+import User from './routes/User.jsx'
+import {BrowserRouter}  from 'react-router-dom'
+
 
 
 
@@ -53,6 +56,10 @@ const router = createBrowserRouter([
     {
       path:`/perfil/:id`,
       element:<Perfil/>
+    },
+    {
+      path:`/users/:id/*`,
+      element:<User/>
     }
   ]
 }
@@ -61,8 +68,10 @@ const router = createBrowserRouter([
 library.add(fas)
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+
     <AuthProvider>
     <RouterProvider router={router}/>
     </AuthProvider>
+  
   </React.StrictMode>,
 )

@@ -10,7 +10,6 @@ export interface AuthResponse {
     body: {
       error: string;
       miss: string
-     /*  success: string; */
     };
   }
 

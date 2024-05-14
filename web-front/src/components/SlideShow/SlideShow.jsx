@@ -6,9 +6,8 @@ import styled from 'styled-components'
 import '/public/css/slideshow.css'
 
 
-
 const SlideShow = ({
-    children ,
+    children  ,
     controles = false,
     autoplay = false,
     speedSlide="800",
@@ -21,7 +20,6 @@ const handlenext = useCallback(() => {
     
     if(slideshow.current.children.length > 0){
         
-
        
         const primerElemento = slideshow.current.children[0];
 
@@ -69,7 +67,7 @@ const handlenext = useCallback(() => {
     }
 } 
 
-useEffect(() => {
+/* useEffect(() => {
 
     var intervalos
 
@@ -79,12 +77,12 @@ useEffect(() => {
             
         }, intervalo);
 
-        // Eliminamos los intervalos
+
         slideshow.current.addEventListener('mouseenter', () => {
             clearInterval(intervalos);
         });
 
-        // Volvemos a poner el intervalo cuando saquen el cursor del slideshow
+       
         slideshow.current.addEventListener('mouseleave', () => {
             intervalos = setInterval(() => {
                 handlenext();
@@ -94,7 +92,7 @@ useEffect(() => {
         });
     }
 }, [autoplay, intervalo, handlenext]);
-
+ */
 
     return(
         <>

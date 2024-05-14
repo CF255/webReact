@@ -9,6 +9,8 @@ import "../../public/css/login-signup.css"
 
 
 
+
+
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -40,8 +42,8 @@ export default function Signup() {
         
         setSucessResponse(json.body.sucess)
         setTimeout(() => {
-          goTo("/");
-        }, 3000);
+          goTo("/login");
+        }, 2000);
        
       } else {
         const json = (await response.json()) as AuthResponseError;
@@ -58,6 +60,8 @@ export default function Signup() {
       console.log(error);
     }
   }
+
+  
 
   if (auth.isAuthenticated) {
     return <Navigate to="/dashboard" />;
@@ -126,6 +130,7 @@ const handleSign_in_btn = () =>{
           </form>
         </div>
     </div>
+    
 
     <div className="panels-container">
                 <div className="panel left-panel">
@@ -135,7 +140,7 @@ const handleSign_in_btn = () =>{
                         <button className="btn trasparent">Sign up</button>
                        
                     </div>
-                    <img src="../../public/img/mobile.svg" className="image" alt="" />
+                    <img src="/img/mobile.svg" className="image" alt="" />
                 </div>
 
                 <div className="panel right-panel">
@@ -146,7 +151,7 @@ const handleSign_in_btn = () =>{
 
                         
                     </div>
-                    <img src="../../public/img/switch.svg" className="image" alt="" />
+                    <img src="/img/switch.svg" className="image" alt="" />
                 </div>
             </div>
  </div>

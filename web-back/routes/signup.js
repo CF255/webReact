@@ -8,16 +8,9 @@ router.post("/", async function (req, res, next) {
 
   console.log(req.file)
 
-  if (!username || !password || !name) {
-    //return next(new Error("username and password are required"));
-    return res.status(409).json(
-      jsonResponse(409, {
-        error: "username and password are required",
-      })
-    );
-  }
-
   try {
+
+    
     const user = new User();
     const userExists = await user.usernameExists(username);
 
@@ -38,7 +31,6 @@ router.post("/", async function (req, res, next) {
         })
       );
 
-     
       
     }
   } catch (err) {

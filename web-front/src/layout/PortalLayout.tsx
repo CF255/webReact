@@ -7,32 +7,38 @@ import BurgerButton from  '../components/PortalLayout/BurgerButton'
 import PerfilInformation from "../components/PortalLayout/PerfilInformation";
 
 
-export default function PortalLayout({children}: {children: React.ReactNode}){
+
+
+ function PortalLayout({children}: {children: React.ReactNode}){
 
     const [clicked, setClicked] = useState(false)
     const auth = useAuth()
 
-
-    async function handleSignOut(e: React.MouseEvent<HTMLAnchorElement>){
-        e.preventDefault();
-
-        try {
-            const response = await fetch(`${API_URL}/signout`,{
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "aaplication/json",
-                    Authorization: `Bearer ${auth.getRefreshToken()}`
-                }
-            })
-
-            if(response.ok){
-                auth.signout()
-            }
-        } catch (error) {
-            
-        }
-       
+     async function handleSignOut( e: React.MouseEvent<HTMLAnchorElement> ){
+        e.preventDefault(); 
+        
+    
+       try {
+           const response = await fetch(`${API_URL}/signout`,{
+               method: "DELETE",
+               headers: {
+                   "Content-Type": "aaplication/json",
+                   Authorization: `Bearer ${auth.getRefreshToken()}`
+               }
+           })
+    
+           if(response.ok){
+               auth.signout()
+           }
+       } catch (error) {
+           
+       }
+      
     }
+    
+
+   
+
 
     const handleaMenu = () =>{
         setClicked(!clicked)
@@ -98,3 +104,6 @@ export default function PortalLayout({children}: {children: React.ReactNode}){
 
     )
 }
+
+
+export {PortalLayout}

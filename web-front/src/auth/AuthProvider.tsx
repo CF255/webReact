@@ -4,6 +4,7 @@ import requestNewAccessToken from "./requestNewAccessToken";
 import { API_URL } from "./constants";
 import '/public/css/loading.css'
 
+
 const AuthContext = createContext({
   isAuthenticated: false,
   getAccessToken: () => {},
@@ -126,6 +127,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }, 1000);
   }, []);
 
+
+
+
+  /* fin */
+
   return (
     <AuthContext.Provider
       value={{
@@ -143,9 +149,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
   );
 }
 
+
+
 async function retrieveUserInfo(accessToken: string) {
+
+   /* user */
   try {
-    const response = await fetch(`${API_URL}/user`, {
+    const response = await fetch(`${API_URL}/perfil`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -159,6 +169,10 @@ async function retrieveUserInfo(accessToken: string) {
       return json.body;
     }
   } catch (error) {}
+
+  
 }
+
+
 
 export const useAuth = () => useContext(AuthContext);

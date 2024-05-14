@@ -1,4 +1,4 @@
-import PortalLayout from "../layout/PortalLayout"
+import { PortalLayout } from "../layout/PortalLayout";
  import confetti from 'canvas-confetti'
 import { useState } from 'react'
  import '/public/css/tresenraya.css'

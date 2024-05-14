@@ -7,7 +7,7 @@ import Detail from '../pages/giffy/Detail'
 import { GifsContextProvider } from "../context/giffy/GifsContext";
 import { Link } from "wouter";
 import Error from "../pages/giffy/Error"
-import PortalLayout from '../layout/PortalLayout'
+import { PortalLayout } from "../layout/PortalLayout";
 
 
 

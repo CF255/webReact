@@ -3,7 +3,7 @@ import { Movies } from '../components/apipelis/Movies'
 import { useMovies } from '../hooks/apipelis/useMovies'
 import { useSearch } from '../hooks/apipelis/useSearch'
 import debounce from 'debounce'
-import PortalLayout from '../layout/PortalLayout'
+import { PortalLayout } from "../layout/PortalLayout";
 import '/public/css/apipelis.css'
 
 
