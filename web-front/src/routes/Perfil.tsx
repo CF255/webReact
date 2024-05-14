@@ -8,7 +8,9 @@ import { useState } from "react"
 import { API_URL } from "../auth/constants"
 import { ModalMessage } from "../components/ModalMessages/Modal"
 import "../../public/css/login-signup.css"
-import Allusers from "../service/users";
+import {Allusers} from "../service/users";
+import NamePerfils from "../components/Perfil/NamePerfils";
+import { useParams } from "react-router-dom";
 
 
 
@@ -25,6 +27,8 @@ export default function Perfil(){
 
     const auth = useAuth()
 
+    
+
     async function handleEliminarCuenta (){
 
       try {
@@ -37,11 +41,11 @@ export default function Perfil(){
         });
 
         if(response.ok){
-          
+          auth.signout()
       }
          
       } catch (error) {
-        auth.signout()
+        
         console.log(error);
       }
 
@@ -92,6 +96,40 @@ export default function Perfil(){
   
 
     }
+
+    const id = useParams().id
+
+    const VisibleFooter = () =>{
+      if(id === auth.getUser()?.id){
+
+        return(
+          <div className="perfil-usuario-footer">
+                 
+
+          {/* Modal Eliminar Cuenta */}
+         <ModalMessage
+         btnAbrirModal = "Eliminar Cuenta"
+         btnAbrirModalCss='btnEliminarModal'
+         >
+     <div className="modalTitulo">
+       <h3><FontAwesomeIcon style={{color: "b56c0d"}} icon={faWarning}/> Advertencia</h3>
+     </div>
+     <div className="modalContenido">
+       <span>Este paso es definitivo. Todos tus datos, enlaces, publicaciones, etc serán borrados y no podrán ser restaurados. Tampoco tendrás acceso a dicha cuenta nuevamente.
+       </span>
+     </div>
+      <div className="btnFinalModal">
+         <button  onClick={handleEliminarCuenta}  className="btnEliminarModal">Aceptar</button>
+     </div>  
+       </ModalMessage>
+         {/* Fin Modal Eliminar Cuenta */}
+
+         </div>
+        )
+       
+      }
+    }
+
   
     
 
@@ -113,7 +151,8 @@ export default function Perfil(){
 
             <div className="perfil-usuario-body">
                 <div className="perfil-usuario-bio">
-                    <h3 className="titulousuario">{auth.getUser()?.name ?? ""}</h3>
+                
+                   <NamePerfils/>
                     <p className="nombre-usuario">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolor atque, exercitationem quod harum, fugiat non similique id perspiciatis suscipit nisi, qui repudiandae ducimus rerum sint vitae eligendi hic iure.</p>
 
                     <div className="perfil-usuario-acciones">
@@ -161,28 +200,9 @@ export default function Perfil(){
                 </div>
 
                 
-                <div className="perfil-usuario-footer">
-                 
-
-                 {/* Modal Eliminar Cuenta */}
-                <ModalMessage
-                btnAbrirModal = "Eliminar Cuenta"
-                btnAbrirModalCss='btnEliminarModal'
-                >
-            <div className="modalTitulo">
-              <h3><FontAwesomeIcon style={{color: "b56c0d"}} icon={faWarning}/> Advertencia</h3>
-            </div>
-            <div className="modalContenido">
-              <span>Este paso es definitivo. Todos tus datos, enlaces, publicaciones, etc serán borrados y no podrán ser restaurados. Tampoco tendrás acceso a dicha cuenta nuevamente.
-              </span>
-            </div>
-            <div className="btnFinalModal">
-                <button  onClick={handleEliminarCuenta}  className="btnEliminarModal">Aceptar</button>
-            </div> 
-              </ModalMessage>
-                {/* Fin Modal Eliminar Cuenta */}
-
-                </div>
+               
+                <VisibleFooter/>
+          
 
       
                 

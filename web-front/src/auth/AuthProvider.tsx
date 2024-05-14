@@ -3,6 +3,7 @@ import type { AuthResponse, User } from "../types/types";
 import requestNewAccessToken from "./requestNewAccessToken";
 import { API_URL } from "./constants";
 import '/public/css/loading.css'
+import { useParams, Link } from "react-router-dom";
 
 
 const AuthContext = createContext({
@@ -16,6 +17,7 @@ const AuthContext = createContext({
   saveUser: (_userData: AuthResponse) => {},
   getUser: () => ({} as User | undefined),
   signout: () => {},
+
 });
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -27,6 +29,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [refreshToken, setRefreshToken] = useState<string>("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isloading, setIsLoading] = useState(true);
+
+
 
   function getAccessToken() {
     return accessToken;
@@ -93,6 +97,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setAccessToken(accessToken);
         setIsAuthenticated(true);
         setIsLoading(false);
+       
       } else {
         //no existe access token
         const token = localStorage.getItem("token");
@@ -162,6 +167,8 @@ async function retrieveUserInfo(accessToken: string) {
         Authorization: `Bearer ${accessToken}`,
       },
     });
+
+
 
     if (response.ok) {
       const json = await response.json();

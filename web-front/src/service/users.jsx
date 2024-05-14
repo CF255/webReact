@@ -11,7 +11,7 @@ import {
 
 
 
-export default function Allusers(){
+function Allusers(){
   const [users, setUsers] = useState([])
   const auth = useAuth()
 
@@ -45,40 +45,17 @@ export default function Allusers(){
 
     }
 
-    const User = () =>{
-      if(!User){
-        return null
-      } 
-
-          const id = useParams().id
-          const user = users.find(a => a._id === String(id))
-           console.log(user)   
-    
-
-      return(
-        <>
-      
-
-      {users.map(user => 
-    <li key={user._id} >
-     <Link to={`/users/${user._id}`}>{user.name}</Link> 
-     </li>)}
-       
-       </>
-      )
-    }
-
     return(
       <>
-     
-    <User/>
-     
 
+      
+     
+ 
 
                  {users.map((user)=>(
                   <article className='articleperfil' key={user._id}>
                    <header className='headerperfil sidedivperfil'>
-                <Link className='aroutes'  to={`/users/${user._id}`} >
+                <Link className='aroutes'  to={`/perfil/${user._id}`} >
                 <img className='imgperfil' src="/img/logoperfil.png"></img>
                 </Link>
 
@@ -100,3 +77,6 @@ export default function Allusers(){
     )
 
 }
+
+
+export {Allusers}

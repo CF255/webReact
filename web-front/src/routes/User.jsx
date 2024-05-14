@@ -1,4 +1,4 @@
-import {Route,Routes,Link, useParams} from 'react-router-dom'
+/* import {Route,Routes,Link, useParams} from 'react-router-dom'
 import { PortalLayout } from "../layout/PortalLayout";
 import { useEffect, useState } from 'react';
 import usersService from "../service/user"
@@ -25,7 +25,7 @@ export default function User  ()  {
 
             const id = useParams().id
             const user = users.find(a => a._id === String(id))
-             /* console.log(user)  */
+             console.log(user)  
       
 
 
@@ -61,3 +61,4 @@ export default function User  ()  {
 
  }
 
+ */

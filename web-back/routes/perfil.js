@@ -32,36 +32,7 @@ router.get('/:id', async (request, response) => {
   response.json(user.toJSON())
 })
 
-/* 
 
-router.get("/:id", async (req, res, )=> {
-
-  const id = req.params.id
-  if(id.length < 24){
-    return res.status(404).json({ error: "id no found" });
-  }
-
-  try {
-    const user = new User();
-    const idexist = await user.idExists(id);
-
-    if(idexist){
-      res.json(jsonResponse(200, req.user));
-      console.log("si********************************************************no id found")
-    }else{
-      console.log("no*************************************************************no id found")
-      return res.status(404).json({ error: "id no found" });
-     
-    }
-
-
-  } catch (error) {
-    return res.status(403).json({ error: "id inválido" });
-  }
-
-
-});
- */
 
 
 router.put("/:id/:newname/:newusername/:newpassword", async (req, res, next )=> {

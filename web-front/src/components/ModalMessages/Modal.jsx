@@ -3,6 +3,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faX} from "@fortawesome/free-solid-svg-icons";
 import { Children, useState } from "react";
 import styled from 'styled-components'
+import { useParams } from "react-router-dom";
+import { useAuth } from "../../auth/AuthProvider";
 
 
 function ModalMessage  ({btnAbrirModal,btnAbrirModalCss ,children}){
@@ -12,13 +14,31 @@ function ModalMessage  ({btnAbrirModal,btnAbrirModalCss ,children}){
         setModal(!modal)
     }
 
+    const id = useParams().id
+    const auth = useAuth()
+
+
+    const Visible = () =>{
+        if(id === auth.getUser()?.id){
+  
+          return(
+            <button onClick={handleCerrarModal} className={` ${btnAbrirModalCss} ${modal? 'activemodal' : ''}`}>{btnAbrirModal}</button> 
+
+          )
+        }
+      }
+  
+
+      
+
     return(
 
 
         <>
+        <Visible/>
 
-        <button onClick={handleCerrarModal} className={` ${btnAbrirModalCss} ${modal? 'activemodal' : ''}`}>{btnAbrirModal}</button> 
-
+       {/*  <button onClick={handleCerrarModal} className={` ${btnAbrirModalCss} ${modal? 'activemodal' : ''}`}>{btnAbrirModal}</button> 
+ */}
            
           <div className={`modalContainer ${modal? 'activemodal' : ''}`}>
           <div className="modalMessage">
