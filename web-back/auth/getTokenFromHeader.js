@@ -13,4 +13,4 @@ if(headers && headers.authorization){
 }
 }
 
-module.exports = getTokenFromHeader
+export default getTokenFromHeader

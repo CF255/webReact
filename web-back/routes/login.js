@@ -1,8 +1,9 @@
-const express = require("express");
-const User = require("../schema/user");
-const { jsonResponse } = require("../lib/jsonResponse");
-const getUserInfo = require("../lib/getUserInfo");
-const router = express.Router();
+import User from "../schema/user.js"
+import jsonResponse from "../lib/jsonResponse.js";
+import getUserInfo from "../lib/getUserInfo.js";
+import { Router } from 'express'
+
+const router = Router();
 
 router.post("/", async function (req, res, next) {
   const { username, password } = req.body;
@@ -33,7 +34,6 @@ router.post("/", async function (req, res, next) {
           })
         );
       } else {
-        //res.status(401).json({ error: "username and/or password incorrect" });
 
         return res.status(401).json(
           jsonResponse(401, {
@@ -53,4 +53,4 @@ router.post("/", async function (req, res, next) {
   }
 });
 
-module.exports = router;
+export default router

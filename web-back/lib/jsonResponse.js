@@ -1,4 +1,4 @@
-exports.jsonResponse = function (statuscode, body) {
+export default function jsonResponse(statuscode, body) {
     return {
       statuscode,
       body: body,

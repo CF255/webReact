@@ -1,7 +1,10 @@
-const router = require("express").Router()
-const getTokenFromHeader = require("../auth/getTokenFromHeader")
-const { jsonResponse } = require("../lib/jsonResponse")
-const Token = require("../schema/token")
+import getTokenFromHeader from "../auth/getTokenFromHeader.js"
+import jsonResponse from "../lib/jsonResponse.js"
+import Token from "../schema/token.js"
+
+import { Router } from 'express'
+
+const router = Router();
 
 router.delete("/", async (req, res)=>{
     try {
@@ -18,5 +21,4 @@ router.delete("/", async (req, res)=>{
     }
 })
 
-
-module.exports = router
+export default router

@@ -1,6 +1,5 @@
 import { useAuth } from "../auth/AuthProvider"
 import { PortalLayout } from "../layout/PortalLayout";
-import fondoperfil from "../../public/img/logoperfil.png"
 import "../../public/css/perfil.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faCamera, faPen,faWarning} from "@fortawesome/free-solid-svg-icons";
@@ -8,11 +7,11 @@ import { useState } from "react"
 import { API_URL } from "../auth/constants"
 import { ModalMessage } from "../components/ModalMessages/Modal"
 import "../../public/css/login-signup.css"
-import {Allusers} from "../service/users";
 import NamePerfils from "../components/Perfil/NamePerfils";
 import { useParams } from "react-router-dom";
-
-
+import { useUsers } from "../hooks/FetchUsers/useUser";
+import { UserList } from "../components/Perfil/UserList";
+import ImagePerfils from "../components/Perfil/ImagePerfil";
 
 
 
@@ -24,6 +23,7 @@ export default function Perfil(){
    const [errorResponse, setErrorResponse] = useState("");
   const [missResponse, setMissResponse] = useState("");
 
+   const {users, refetchUsers} = useUsers() 
 
     const auth = useAuth()
 
@@ -142,7 +142,8 @@ export default function Perfil(){
             <div className="perfil-usuario-header">
                 <div className="perfil-usuario-portada">
                 <div className="perfil-usuario-avatar">
-                    <img src={fondoperfil} alt="img-avatar" />
+                     <ImagePerfils users={users}/>
+                    
                     <button className="boton-avatar"><FontAwesomeIcon style={{color: '#000'}} icon={faPen}/> </button>
                 </div>
                 <button className="boton-portada"><FontAwesomeIcon style={{color: '#fff'}} icon={faCamera}/></button>
@@ -152,7 +153,7 @@ export default function Perfil(){
             <div className="perfil-usuario-body">
                 <div className="perfil-usuario-bio">
                 
-                   <NamePerfils/>
+                   <NamePerfils users={users}/>
                     <p className="nombre-usuario">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolor atque, exercitationem quod harum, fugiat non similique id perspiciatis suscipit nisi, qui repudiandae ducimus rerum sint vitae eligendi hic iure.</p>
 
                     <div className="perfil-usuario-acciones">
@@ -199,7 +200,7 @@ export default function Perfil(){
                  <a className="btnmostrartodo" href="#">Mostrar todo</a>
                   </div>
                
-                 <Allusers/>
+                 <UserList users={users}/>
                  
                 </div>
 

@@ -1,6 +1,6 @@
-const log = require("../lib/Trace");
-const validateToken = require("./validateToken");
-const { verifyAccessToken } = require("./verifyTokens"); 
+import log from "../lib/Trace.js";
+import validateToken from "./validateToken.js"
+import { verifyAccessToken } from "./verifyTokens.js";
 
 
  function AuthenticateToken(req, res, next) {
@@ -8,9 +8,9 @@ const { verifyAccessToken } = require("./verifyTokens");
   log.info("headers", req.headers);
   try {
     token = validateToken(req.headers);
-    //    log.info("Token", token);
+ 
   } catch (error) {
-    //console.log("Error", error.message);
+    
     log.error(error.message);
     if (error.message === "Token not provided") {
       return res.status(401).json({ error: "Token no proporcionado" });
@@ -30,5 +30,4 @@ const { verifyAccessToken } = require("./verifyTokens");
   }
 }
 
-module.exports = AuthenticateToken; 
-
+export default AuthenticateToken

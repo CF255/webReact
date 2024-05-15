@@ -1,13 +1,18 @@
+import express from "express"
+import cors from "cors"
+import mongoose from "mongoose"
+import dotenv from "dotenv"
+import  SignUp from "./routes/signup.js"
+import Login from "./routes/login.js"
+import SignOut from "./routes/signout.js"
+import RefreshToken from "./routes/refreshToken.js"
+import AuthenticateToken from "./auth/authenticate.js"
+import Perfil from "./routes/perfil.js"
 
-const express = require('express')
-const cors = require('cors')
+
+dotenv.config()
+
 const app = express()
-const mongoose = require('mongoose')
-const authenticate = require("./auth/authenticate")
-
-require('dotenv').config();
-
-
 
 const port = process.env.PORT || 3100
 
@@ -21,12 +26,13 @@ async function main(){
 
 main().catch(console.error)
 
-app.use("/api/signup", require("./routes/signup"))
-app.use("/api/login", require("./routes/login"))
-app.use("/api/signout", require("./routes/signout"))
-app.use("/api/refresh-token", require("./routes/refreshToken"))
-/* app.use("/api/user", authenticate,   require("./routes/user")) */
-app.use("/api/perfil",  authenticate,   require("./routes/perfil")) 
+app.use("/api/signup", SignUp)  
+app.use("/api/login", Login)
+app.use("/api/signout", SignOut)
+app.use("/api/refresh-token", RefreshToken)
+app.use("/api/perfil",   AuthenticateToken,   Perfil) 
+
+
 
 app.get("/", (req, res)=>{
     res.send('hello')

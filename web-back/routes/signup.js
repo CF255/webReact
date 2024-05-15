@@ -1,16 +1,24 @@
-const express = require("express");
-const User = require("../schema/user");
-const { jsonResponse } = require("../lib/jsonResponse");
-const router = express.Router();
+import User from "../schema/user.js"
+import  jsonResponse from "../lib/jsonResponse.js";
+import { Router } from 'express'
+import {upload} from "../config/multer.js";
+import { uploadFile } from "../util/uploadFile.js";
+const router = Router();
 
-router.post("/", async function (req, res, next) {
-  const { username, password, name } = req.body;
 
-  console.log(req.file)
 
+
+
+router.post("/", upload.fields([{name: 'image', maxCount: 1}]),async function (req, res, next) {
+  
+  
+ const{username, password, name} = req.body   
+  const image = req.files.image
+  const  body = req.body;
+
+  
   try {
 
-    
     const user = new User();
     const userExists = await user.usernameExists(username);
 
@@ -20,16 +28,25 @@ router.post("/", async function (req, res, next) {
           miss: "username already exists",
         })
       );
-      //return next(new Error("user already exists"));
-    } else {
-      const user = new User({ username, password, name });
-      user.save();
-
-      return res.status(200).json(
-        jsonResponse(200, {
-          sucess: "User created successfully",
+      
+    } else if(image && image.length > 0){
+        const {downloadURL} = await uploadFile(image[0])
+    
+        const user = await new User({
+          username: body.username,
+          password: body.password,
+          name: body.name,
+          image: downloadURL
         })
-      );
+        
+        user.save() 
+    
+        return res.status(200).json(
+          jsonResponse(200, {
+            sucess: "User created successfully",
+          })
+        );
+
 
       
     }
@@ -39,8 +56,7 @@ router.post("/", async function (req, res, next) {
         error: "Error creating user",
       })
     );
-    //return next(new Error(err.message));
   }
 });
 
-module.exports = router;
+export default router

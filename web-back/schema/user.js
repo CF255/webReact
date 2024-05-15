@@ -1,14 +1,20 @@
-const Mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const { generateAccessToken, generateRefreshToken } = require("../auth/generateTokens");
-const getUserInfo = require("../lib/getUserInfo");
-const Token = require("../schema/token");
+import bcrypt from "bcrypt"
+import { Schema, model } from "mongoose";
+import Mongoose from "mongoose";
+import { generateAccessToken, generateRefreshToken } from "../auth/generateTokens.js";
+import Token from "../schema/token.js"
+import getUserInfo from "../lib/getUserInfo.js";
 
-const UserSchema = new Mongoose.Schema({
+
+const UserSchema = new Schema({
   id: { type: Object },
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
+  image: { type: String}
+}, 
+{
+  timestamps: true
 });
 
 UserSchema.pre("save", function (next) {
@@ -61,8 +67,7 @@ UserSchema.methods.createRefreshToken = async function (next) {
     return refreshToken;
   } catch (error) {
     console.error(error);
-    //next(new Error("Error creating token"));
   }
 };
 
-module.exports = Mongoose.model("User", UserSchema);
+export default model("User", UserSchema)

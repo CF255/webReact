@@ -1,11 +1,13 @@
-const express = require("express");
-const { jsonResponse } = require("../lib/jsonResponse");
-const log = require("../lib/Trace"); 
-const { verifyRefreshToken } = require("../auth/verifyTokens");
-const { generateAccessToken } = require("../auth/generateTokens");
-const getUserInfo = require("../lib/getUserInfo");
-const Token = require("../schema/token");
-const router = express.Router();
+import express from "express"
+import jsonResponse from "../lib/jsonResponse.js";
+import log from "../lib/Trace.js"
+import {verifyRefreshToken} from "../auth/verifyTokens.js"
+import {generateAccessToken} from "../auth/generateTokens.js"
+import getUserInfo from "../lib/getUserInfo.js";
+import Token from "../schema/token.js";
+import { Router } from 'express'
+
+const router = Router();
 
 router.post("/", async function (req, res, next) {
   log.info("POST /api/refresh-token"); 
@@ -31,4 +33,4 @@ router.post("/", async function (req, res, next) {
   }
 });
 
-module.exports = router;
+export default router

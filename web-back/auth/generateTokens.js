@@ -1,5 +1,6 @@
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+import jwt from "jsonwebtoken"
+import dotenv from "dotenv"
+dotenv.config()
 
 function sign(payload, isAccessToken) {
   console.log("payload", payload);
@@ -15,7 +16,7 @@ function sign(payload, isAccessToken) {
   );
 }
 
-// Función para generar un token de acceso utilizando jsonwebtoken
+
 function generateAccessToken(user) {
   return sign({ user }, true);
 }
@@ -23,4 +24,4 @@ function generateRefreshToken(user) {
   return sign({ user }, false);
 }
 
-module.exports = { generateAccessToken, generateRefreshToken };
+export {generateAccessToken, generateRefreshToken}

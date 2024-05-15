@@ -1,10 +1,9 @@
- const bunyan = require("bunyan"); 
+import bunyan from "bunyan"
 
 const log = bunyan.createLogger({
   name: "Todoist",
   stream: process.stdout,
 });
 
-module.exports = log; 
-
+export default log
 

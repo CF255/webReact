@@ -3,7 +3,7 @@ import type { AuthResponse, User } from "../types/types";
 import requestNewAccessToken from "./requestNewAccessToken";
 import { API_URL } from "./constants";
 import '/public/css/loading.css'
-import { useParams, Link } from "react-router-dom";
+
 
 
 const AuthContext = createContext({

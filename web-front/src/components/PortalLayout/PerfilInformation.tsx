@@ -7,6 +7,7 @@ import '/public/css/perfilinformation.css'
 
 function PerfilInformation(){
 
+   
     const auth = useAuth()
     
     return(
@@ -15,7 +16,7 @@ function PerfilInformation(){
         <article className='articleperfil'>
             <header className='headerperfil'>
                 <Link className='aroutes'  to={`/perfil/${auth.getUser()?.id }`} >
-                <img className='imgperfil' src="/img/logoperfil.png"></img>
+                <img className='imgperfil' src={auth.getUser()?.image}></img>
                 </Link>
 
                 <div className='containerperfiltext'>

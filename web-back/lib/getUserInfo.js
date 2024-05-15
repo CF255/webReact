@@ -4,7 +4,8 @@ function getUserInfo(user) {
       username: user.username,
       name: user.name,
       id: user.id || user._id,
+      image: user.image,
     };
   }
-  
-  module.exports = getUserInfo;
+
+export default getUserInfo

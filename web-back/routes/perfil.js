@@ -1,12 +1,12 @@
-const bcrypt = require("bcrypt");
-const express = require("express");
-const { jsonResponse } = require("../lib/jsonResponse");
-const log = require("../lib/Trace");
-const router = express.Router();
-const User = require("../schema/user");
-const getTokenFromHeader = require("../auth/getTokenFromHeader");
+import bcrypt from "bcrypt"
+import jsonResponse from "../lib/jsonResponse.js";
+import log from "../lib/Trace.js";
+import User from "../schema/user.js";
+import getTokenFromHeader from "../auth/getTokenFromHeader.js";
+import { Router } from 'express'
 
-
+const router = Router();
+  
 
 router.get("/",  (req, res, )=> {
   
@@ -16,16 +16,28 @@ router.get("/",  (req, res, )=> {
 
 }); 
 
-router.get("/users",  (req, res, )=> {
-   User.find()
-  .then(user=>{
-    res.json(user)
-  })
-  .catch(err =>{
-    console.log('error')
-  })
+router.get("/users", async (req, res, )=> {
+
+  try {
+    const users = await User.find().sort({createAt: -1})
+    res.status(200).json({users})
+  } catch (error) {
+    res.status(400).json({message: 'Ocurrio un error', error})
+  } 
 
 }); 
+
+router.get("/users/info", async (req, res, )=> {
+     User.find()
+   .then(user=>{
+     res.json(user)
+   })
+   .catch(err =>{
+     console.log('error')
+   })  
+ 
+
+ }); 
 
 router.get('/:id', async (request, response) => {
   const user = await User.findById(request.params.id)
@@ -73,9 +85,7 @@ try {
            
           });
       } 
-  
-
-    
+   
   }
 
  
@@ -109,6 +119,4 @@ router.delete("/delete/:id", async (req, res, )=> {
 
 })
 
-
-
-module.exports = router;
+export default router

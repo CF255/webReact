@@ -1,43 +1,51 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthResponse, AuthResponseError } from "../types/types";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import { faUser, faLock, faUserNinja} from "@fortawesome/free-solid-svg-icons";
+import { faUser, faLock, faUserNinja, faImage} from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faGithub, faGoogle, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import "../../public/css/login-signup.css"
 
 
-
-
-
 export default function Signup() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+
   const [errorResponse, setErrorResponse] = useState("");
   const [missResponse, setMissResponse] = useState("");
   const [sucessResponse, setSucessResponse] = useState("");
+  const defaulValue ={
+    name: '',
+    username: '',
+    password: '',
+    image: null as File | null
+  }
+  const [form, setForm] = useState(defaulValue)
 
   const auth = useAuth();
   const goTo = useNavigate();
 
+
   async function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(username, password, name);
+
+
+    const formData = new FormData()
+
+    for(const [key, value] of Object.entries(form)){
+      formData.append(key, value!)
+    }
+   
 
     try {
       const response = await fetch("http://localhost:3100/api/signup", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password, name }),
-      });
+        body: formData
+      })
+
       if (response.ok) {
         const json = (await response.json()) as AuthResponse;
         console.log(json);
-        setUsername("");
-        setPassword("");
-        setName("");
+        setForm(defaulValue)
 
         
         setSucessResponse(json.body.sucess)
@@ -59,15 +67,20 @@ export default function Signup() {
     } catch (error) {
       console.log(error);
     }
+  }  
+
+  const handlechange = (e: ChangeEvent<HTMLInputElement>) =>{
+
+    if(e.target.name === 'image'){
+      const file = e.target.files ? e.target.files[0] : null
+      setForm ({...form, [e.target.name]: file})
+    }else{
+
+      setForm ({...form, [e.target.name]: e.target.value})
+    }
   }
 
-  
-
-  if (auth.isAuthenticated) {
-    return <Navigate to="/dashboard" />;
-  }
-
-
+ 
 
 const handleSign_in_btn = () =>{
   const container = document.querySelector(".container")
@@ -79,13 +92,17 @@ const handleSign_in_btn = () =>{
 }
 
 
+if (auth.isAuthenticated) {
+  return <Navigate to="/dashboard" />;
+}
+
 
   return (
 
     <div className="container sign-up-mode">
     <div className="forms-container">
         <div className="signin-signup">
-        <form onSubmit={handleSubmit} className="sign-up-form">
+        <form  onSubmit={handleSubmit}  className="sign-up-form">
     <h1 className="title">Sign Up</h1>
 
      <div className="modalmessage">
@@ -101,21 +118,28 @@ const handleSign_in_btn = () =>{
    <div className="input-field-i">
    <FontAwesomeIcon style={{color: '#acacac'}} icon={faUser}/>
    </div>
-    <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name"></input>
+    <input type="text" required value={form.name} name="name"  onChange={handlechange} placeholder="Name"></input>
    </div>
 
    <div className="input-field">
    <div className="input-field-i">
    <FontAwesomeIcon style={{color: '#acacac'}} icon={faUserNinja}/>
    </div>
-    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username"/>
+    <input type="text" required value={form.username} name="username" onChange={handlechange} placeholder="Username"/>
     </div>
 
     <div className="input-field">
    <div className="input-field-i">
    <FontAwesomeIcon style={{color: '#acacac'}} icon={faLock}/>
    </div>
-    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
+    <input type="password" required value={form.password} name="password" onChange={handlechange} placeholder="Password"/>
+    </div>
+
+    <div className="input-field">
+   <div className="input-field-i">
+   <FontAwesomeIcon style={{color: '#acacac'}} icon={faImage}/>
+   </div>
+    <input type="file" name="image" accept="image/png, image/jpeg" onChange={handlechange} placeholder="image"/>
     </div>
 
     <input type="submit" value="Sign Up" className="btn solid"/>
