@@ -37,8 +37,6 @@ function ModalMessage  ({btnAbrirModal,btnAbrirModalCss ,children}){
         <>
         <Visible/>
 
-       {/*  <button onClick={handleCerrarModal} className={` ${btnAbrirModalCss} ${modal? 'activemodal' : ''}`}>{btnAbrirModal}</button> 
- */}
            
           <div className={`modalContainer ${modal? 'activemodal' : ''}`}>
           <div className="modalMessage">

@@ -20,6 +20,14 @@ export interface AuthResponse {
     image: string;
     id: string;
   }
+
+  export interface Note {
+    _id: string;
+    title: string;
+    description: string;
+    created_at: string,
+    updated_at: string
+  }
   
   export interface AccessTokenResponse {
     statusCode: number;

@@ -66,7 +66,7 @@ const handlenext = useCallback(() => {
         }, 30);
     }
 } 
-
+/* 
  useEffect(() => {
 
     var intervalos
@@ -92,7 +92,7 @@ const handlenext = useCallback(() => {
         });
     }
 }, [autoplay, intervalo, handlenext]);
- 
+  */
 
     return(
         <>

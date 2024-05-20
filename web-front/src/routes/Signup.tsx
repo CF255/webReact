@@ -6,10 +6,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faUser, faLock, faUserNinja, faImage} from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faGithub, faGoogle, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import "../../public/css/login-signup.css"
-
+import logoperfil from '../../public/img/logoperfil.png'
 
 export default function Signup() {
 
+  const [preview, setPreview] = useState<File | null>(null)
   const [errorResponse, setErrorResponse] = useState("");
   const [missResponse, setMissResponse] = useState("");
   const [sucessResponse, setSucessResponse] = useState("");
@@ -69,15 +70,24 @@ export default function Signup() {
     }
   }  
 
-  const handlechange = (e: ChangeEvent<HTMLInputElement>) =>{
+  const handlechange = (e: React.ChangeEvent<HTMLInputElement>) =>{
+    
+    
 
     if(e.target.name === 'image'){
       const file = e.target.files ? e.target.files[0] : null
-      setForm ({...form, [e.target.name]: file})
+setForm ({...form, [e.target.name]: file})
     }else{
 
       setForm ({...form, [e.target.name]: e.target.value})
     }
+    
+
+    if(!e.target.files) return;
+    setPreview(e.target.files[0])
+  
+   
+  
   }
 
  
@@ -111,7 +121,23 @@ if (auth.isAuthenticated) {
     {!!sucessResponse && <div className="sucessmessage">{sucessResponse}</div>}
     </div> 
 
+    
 
+    <div className="imagen-signup">
+        <img  src={preview === null ? "../../public/img/logoperfil.png" :URL.createObjectURL(preview)} alt=""  />
+    </div>
+
+  <div className="input-field">
+   <div className="input-field-i"> 
+   <FontAwesomeIcon style={{color: '#acacac'}} icon={faImage}/>
+   </div>
+
+   <div className="file-select" id="src-file1" >
+  <input type="file" name="image" accept="image/png, image/jpeg" onChange={handlechange}  aria-label="Archivo"></input>
+</div>
+   
+    {/* <input type="file" name="image" accept="image/png, image/jpeg"  onChange={handlechange} placeholder="image"/> */}
+    </div>
 
 
    <div className="input-field">
@@ -132,14 +158,8 @@ if (auth.isAuthenticated) {
    <div className="input-field-i">
    <FontAwesomeIcon style={{color: '#acacac'}} icon={faLock}/>
    </div>
+   
     <input type="password" required value={form.password} name="password" onChange={handlechange} placeholder="Password"/>
-    </div>
-
-    <div className="input-field">
-   <div className="input-field-i">
-   <FontAwesomeIcon style={{color: '#acacac'}} icon={faImage}/>
-   </div>
-    <input type="file" name="image" accept="image/png, image/jpeg" onChange={handlechange} placeholder="image"/>
     </div>
 
     <input type="submit" value="Sign Up" className="btn solid"/>

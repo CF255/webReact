@@ -13,6 +13,7 @@ import TresEnRaya from './routes/TresEnRaya.jsx'
 import ApiPelis from './routes/ApiPelis.jsx'
 import Giffy from './routes/Giffy.jsx'
 import Perfil from './routes/Perfil.jsx'
+import Notes from './routes/Notes.tsx'
 
 
 
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
     {
       path:`/perfil/:id`,
       element:<Perfil/>
+    },
+    {
+      path:`/perfil/notes/:id`,
+      element:<Notes/>
     }
   ]
 }

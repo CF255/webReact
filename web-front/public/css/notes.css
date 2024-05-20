@@ -1,0 +1,183 @@
+
+
+.containerObjetsNotes{
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 90%;
+}
+
+.containerObjetsNotes .containerNoteName{
+    display: flex;
+    gap: 10px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bodyNotes,
+.seccion-perfil-usuario .cardNoteGrid{
+    width: 100%;
+    max-width: 1300px;
+  
+
+}
+
+
+
+.seccion-perfil-usuario .perfil-usuario-bodyNotes{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px; 
+  
+}
+
+
+.seccion-perfil-usuario .perfil-usuario-Notes{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.737);
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+    justify-content: center;
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+/* .cardNoteGrid{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+     box-shadow: 0 0 12px rgba(0, 0, 0, 0.737);
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+    justify-content: center;
+    align-self: center;
+    margin-bottom: 20px;
+    max-width: 1500px;
+} */
+
+.perfil-usuario-bodyNotes .contaninerMainTitle{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.perfil-usuario-Notes .containerSearchNotes,
+.perfil-usuario-Notes .contaninerMainTitle{
+    margin-bottom: 10px;
+}
+
+.perfil-usuario-bodyNotes .containerSearchNotes{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.perfil-usuario-bodyNotes .containerSearchNotes input{
+    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 5px;
+    border: 1px solid #b0b0b0;
+}
+
+
+/* card note */
+
+.cardNoteWrapper{
+    background-color: #0F2F6D;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.445);
+  
+}
+
+.cardNoteWrapper .cardBodyNote{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+.cardNoteWrapper .cardFooterNote {
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+    
+}
+
+.cardNoteWrapper .cardFooterNote a{
+    text-transform: uppercase;
+    color: #d2d2d2;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.cardNoteGrid h2{
+    font-size: 20px;
+}
+
+.cardNoteGrid p{
+    font-size: 15px;
+}
+
+.cardNoteGrid{
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 10px;
+}
+
+/* fin */
+
+.containerObjetsNotes .btnNewNote{
+    padding: 10px;
+    border-radius: 3px;
+    border: 2px solid #181a39;
+    background-color: #0F2F6D;
+    color: #fff;
+    font-size: 14px;
+}
+
+.containerObjetsNotes .btnNewNote:hover{
+    border: 2px solid #0F2F6D  ;
+    background-color: #fff ;
+    color:#181a39;
+    cursor: pointer;
+    
+}
+
+
+/* media */
+@media (max-width: 870px) {
+   
+    .cardNoteGrid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+     }
+     
+
+}
+
+@media (max-width: 570px) {
+   
+    .cardNoteGrid{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+     }
+     
+
+}
+
+
+
+
+
+/* fin */

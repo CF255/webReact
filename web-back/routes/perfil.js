@@ -45,57 +45,58 @@ router.get('/:id', async (request, response) => {
 })
 
 
+router.put("/:id/:newname/:newusername/:newpassword", async function(req, res, next ) {
 
-
-router.put("/:id/:newname/:newusername/:newpassword", async (req, res, next )=> {
+  try {
+    const { username } = req.body;
   
-
-try {
-  const { username } = req.body;
-
-  const user = new User();
-  const userExists = await user.usernameExists(username);
-
-  if (userExists) {
-    
-    return res.status(409).json(
-      jsonResponse(409, {
-        miss: "username already exists",
-      }))
-
-  }else{
-    const refreshToken = getTokenFromHeader(req.headers)
+    const user = new User();
+    const userExists = await user.usernameExists(username);
   
-    if(refreshToken){
-      const id = req.params.id
-  const newname = req.params.newname
-  const newusername = req.params.newusername
-  let newpassword = req.params.newpassword
-    
-          bcrypt.hash(newpassword, 10, (err, hash) => {
-            if (err) {
-              next(err);
-            } else {
-              newpassword = hash;
-            
-              User.findByIdAndUpdate({_id: id}, {$set: {name: newname, username: newusername , password: newpassword }})
-              .then(doc =>{})
-              next();
-            }
-           
-          });
-      } 
+    if (userExists) {
+      
+      return res.status(409).json(
+        jsonResponse(409, {
+          miss: "username already exists",
+        }))
+  
+    }else{
+      const refreshToken = getTokenFromHeader(req.headers)
+
+      if(refreshToken){
+
+      
+
+        const id = req.params.id
+    const newname = req.params.newname
+    const newusername = req.params.newusername
+    let newpassword = req.params.newpassword
+
+      
+            bcrypt.hash(newpassword, 10, (err, hash) => {
+              if (err) {
+                next(err);
+              } else {
+                newpassword = hash;
+              
+                User.findByIdAndUpdate({_id: id}, {$set: {name: newname, username: newusername , password: newpassword }})
+                .then(doc =>{})
+                next();
+              }
+             
+            });
+        } 
+     
+    }
+  
    
+  } catch (error) {
+    console.log(error)
+    res.status(400).json({response: 'fail'})
+  
   }
-
- 
-} catch (error) {
-  console.log(error)
-  res.status(400).json({response: 'fail'})
-
-}
-
-});
+  
+  });
 
 
 router.delete("/delete/:id", async (req, res, )=> {

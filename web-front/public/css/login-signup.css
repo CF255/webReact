@@ -313,6 +313,49 @@ transform: translateX(800px);
     opacity: 1;
 }
 
+.imagen-signup img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #050733;
+    background-color: #050733;
+}
+
+
+.file-select {
+    position: relative;
+    display: inline-block;
+    
+  }
+  
+  .file-select::before {
+    background-color: #0F2F6D;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: 'Seleccionar'; /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    
+  }
+  
+  .file-select input[type="file"] {
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  #src-file1::before {
+    content: 'Foto de perfil ';
+  }
+
 
 
 @media (max-width: 870px){

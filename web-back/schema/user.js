@@ -1,9 +1,10 @@
 import bcrypt from "bcrypt"
 import { Schema, model } from "mongoose";
-import Mongoose from "mongoose";
+import mongoose from "mongoose";
 import { generateAccessToken, generateRefreshToken } from "../auth/generateTokens.js";
 import Token from "../schema/token.js"
 import getUserInfo from "../lib/getUserInfo.js";
+import mongooseUniqueValidator from "mongoose-unique-validator";
 
 
 const UserSchema = new Schema({
@@ -11,7 +12,7 @@ const UserSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
-  image: { type: String}
+  image: { type: String},
 }, 
 {
   timestamps: true
@@ -36,12 +37,12 @@ UserSchema.pre("save", function (next) {
 
 
 UserSchema.methods.usernameExists = async function (username) {
-  const result = await Mongoose.model("User").find({ username: username });
+  const result = await mongoose.model("User").find({ username: username });
   return result.length > 0;
 };
 
 UserSchema.methods.idExists = async function (id) {
-  const result = await Mongoose.model("User").find({_id: id });
+  const result = await mongoose.model("User").find({_id: id });
   return result.length > 0;
 };
 

@@ -16,7 +16,7 @@ router.post("/", upload.fields([{name: 'image', maxCount: 1}]),async function (r
   const image = req.files.image
   const  body = req.body;
 
-  
+
   try {
 
     const user = new User();
