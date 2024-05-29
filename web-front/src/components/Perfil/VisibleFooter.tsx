@@ -9,9 +9,9 @@ import { API_URL } from "../../auth/constants"
 export default function VisibleFooter  () {
 
     const auth = useAuth()
-
     const id = useParams().id
 
+    
 
     async function handleEliminarCuenta (){
 

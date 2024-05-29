@@ -1,22 +1,36 @@
 import bcrypt from "bcrypt"
-import { Schema, model } from "mongoose";
 import mongoose from "mongoose";
 import { generateAccessToken, generateRefreshToken } from "../auth/generateTokens.js";
 import Token from "../schema/token.js"
 import getUserInfo from "../lib/getUserInfo.js";
-import mongooseUniqueValidator from "mongoose-unique-validator";
 
 
-const UserSchema = new Schema({
+
+const UserSchema = new mongoose.Schema({
   id: { type: Object },
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
   image: { type: String},
+  notes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Note'
+    }
+  ]
 }, 
 {
   timestamps: true
 });
+
+  UserSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})  
+
 
 UserSchema.pre("save", function (next) {
   if (this.isModified("password") || this.isNew) {
@@ -71,4 +85,4 @@ UserSchema.methods.createRefreshToken = async function (next) {
   }
 };
 
-export default model("User", UserSchema)
+export default mongoose.model("User", UserSchema)

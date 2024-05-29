@@ -3,7 +3,7 @@ import { User } from "../../types/types";
 import '/public/css/perfilinformation.css'
 
 
-export function UserList({users}:{users: User[]}){
+export function NoteFriendsList({users}:{users: User[]}){
 
 
     if(!users) return null
@@ -16,7 +16,7 @@ export function UserList({users}:{users: User[]}){
         {users.map((user)=>(
             <article className='articleperfil' key={user.id}>
              <header className='headerperfil sidedivperfil'>
-          <Link className='aroutes'  to={`/perfil/${user.id}`} >
+          <Link className='aroutes'  to={`/perfil/notes/${user.id}`} >
           <img className='imgperfil' src={user.image} alt={fullName(user)}></img>
           </Link>
 

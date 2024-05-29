@@ -7,7 +7,7 @@ import '/public/css/perfilinformation.css'
 export default function ImagePerfils({users}:{users: User[]}){
 
           const id = useParams().id
-          const user = users.find(a => a._id === String(id))
+          const user = users.find(a => a.id === String(id))
 
     return(
       <>

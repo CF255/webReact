@@ -1,11 +1,17 @@
-import { API_URL } from "../../auth/constants";
 
 
+/* 
 export async function getNotes(){
 
     try {
         
-        const response = await fetch(`${API_URL}/notes`)
+        const response = await fetch(`${API_URL}/notes`,{
+            method: "GET",
+            headers: {
+                "Content-Type": "aaplication/json",
+                Authorization: `Bearer ${auth.getAccessToken()}`
+            }
+        })
         const data = await response.json()
         return data
         
@@ -13,10 +19,10 @@ export async function getNotes(){
         console.log(error)
 
     }
-}
+} */
+ 
 
-
-export async function createNote(payload: unknown) {
+/* export async function createNote(payload: unknown) {
     try {
         const response =await fetch(`${API_URL}/notes`, {
             method: "POST",
@@ -32,10 +38,13 @@ export async function createNote(payload: unknown) {
         console.log(error)
     }
     
-}
+} */
 
 
-export async function editNote(id:string, payload: unknown) {
+
+
+
+/* export async function editNote(id:string, payload: unknown) {
     try {
         const response = await fetch(`${API_URL}/notes/${id}`,{
             method: "PUT",
@@ -52,9 +61,9 @@ export async function editNote(id:string, payload: unknown) {
 
     }
 }
+ */
 
-
-export async function deleteNote(id:string) {
+/* export async function deleteNote(id:string) {
     try {
         const response = await fetch(`${API_URL}/notes/${id}`,{
             method: 'DELETE'
@@ -64,4 +73,4 @@ export async function deleteNote(id:string) {
     } catch (error) {
         console.error(error)
     }
-}
+} */

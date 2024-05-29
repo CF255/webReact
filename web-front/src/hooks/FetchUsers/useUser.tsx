@@ -5,7 +5,7 @@ import { useAuth } from "../../auth/AuthProvider";
 
 
 
-export const useUsers = () =>{
+export function useUsers  () {
 
     const [users, setUsers] = useState<User[] | []>([])
     const auth = useAuth()
@@ -24,8 +24,10 @@ export const useUsers = () =>{
       fetchUsers()
     }, [])
 
-    return {
-        users,
-        refetchUsers: fetchUsers
-    }
+    return (
+      {users, refetchUsers: fetchUsers}
+      
+          
+       
+    )
 }

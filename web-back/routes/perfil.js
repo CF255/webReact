@@ -4,6 +4,8 @@ import log from "../lib/Trace.js";
 import User from "../schema/user.js";
 import getTokenFromHeader from "../auth/getTokenFromHeader.js";
 import { Router } from 'express'
+import note from "../schema/note.js";
+
 
 const router = Router();
   
@@ -17,38 +19,68 @@ router.get("/",  (req, res, )=> {
 }); 
 
 router.get("/users", async (req, res, )=> {
-
+  
   try {
-    const users = await User.find().sort({createAt: -1})
-    res.status(200).json({users})
-  } catch (error) {
-    res.status(400).json({message: 'Ocurrio un error', error})
-  } 
+    const users =  await User.find({}).populate('notes', {
+      title: 1,
+      description: 1,
+      favorite: 1
+    })
+    /* res.json(users) */
+     res.status(200).json({users}) 
+
+
+} catch (error) {
+    console.log(error)
+    res.status(500).send(error)
+}
+
 
 }); 
 
 router.get("/users/info", async (req, res, )=> {
-     User.find()
-   .then(user=>{
-     res.json(user)
-   })
-   .catch(err =>{
-     console.log('error')
-   })  
+ 
  
 
- }); 
+  try {
+    const users =  await User.find({}).populate('notes', {
+      title: 1,
+      description: 1,
+      favorite: 1
+    })
+    res.json(users) 
+   
+} catch (error) {
+    console.log(error)
+    res.status(500).send(error)
+}
+
+}); 
 
 router.get('/:id', async (request, response) => {
   const user = await User.findById(request.params.id)
+  
   response.json(user.toJSON())
+})
+
+router.get('/:id/fav', async (req, res) => {
+  const user = await User.findById(req.params.id).populate('notes', {
+    title: 1,
+    description: 1,
+    favorite: 1
+  })
+  const note = user.notes
+  const fav = note
+  res.json(fav) 
 })
 
 
 router.put("/:id/:newname/:newusername/:newpassword", async function(req, res, next ) {
-
+  
+  
+  const{username, password, name} = req.body   
   try {
-    const { username } = req.body;
+  
   
     const user = new User();
     const userExists = await user.usernameExists(username);
@@ -59,7 +91,7 @@ router.put("/:id/:newname/:newusername/:newpassword", async function(req, res, n
         jsonResponse(409, {
           miss: "username already exists",
         }))
-  
+
     }else{
       const refreshToken = getTokenFromHeader(req.headers)
 

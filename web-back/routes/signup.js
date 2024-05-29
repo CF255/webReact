@@ -8,7 +8,6 @@ const router = Router();
 
 
 
-
 router.post("/", upload.fields([{name: 'image', maxCount: 1}]),async function (req, res, next) {
   
   
@@ -16,9 +15,8 @@ router.post("/", upload.fields([{name: 'image', maxCount: 1}]),async function (r
   const image = req.files.image
   const  body = req.body;
 
-
   try {
-
+    
     const user = new User();
     const userExists = await user.usernameExists(username);
 
@@ -43,7 +41,7 @@ router.post("/", upload.fields([{name: 'image', maxCount: 1}]),async function (r
     
         return res.status(200).json(
           jsonResponse(200, {
-            sucess: "User created successfully",
+            sucess: "Usuario creado",
           })
         );
 
@@ -53,7 +51,7 @@ router.post("/", upload.fields([{name: 'image', maxCount: 1}]),async function (r
   } catch (err) {
     return res.status(500).json(
       jsonResponse(500, {
-        error: "Error creating user",
+        error: "Error creando usuario",
       })
     );
   }

@@ -16,7 +16,6 @@ import Perfil from './routes/Perfil.jsx'
 import Notes from './routes/Notes.tsx'
 
 
-
 const router = createBrowserRouter([
 
 {
@@ -57,7 +56,7 @@ const router = createBrowserRouter([
     },
     {
       path:`/perfil/notes/:id`,
-      element:<Notes/>
+      element:<Notes />
     }
   ]
 }

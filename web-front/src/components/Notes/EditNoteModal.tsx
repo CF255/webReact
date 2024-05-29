@@ -1,8 +1,35 @@
 import { useState } from "react"
 import Modal from "./common/Modal"
-import { editNote } from "../../service/Note/noteservices"
+/* import { editNote } from "../../service/Note/noteservices" */
+import { API_URL } from "../../auth/constants"
+import { useAuth } from "../../auth/AuthProvider"
+
 
 const EditNoteModal = (props) =>{
+    const auth = useAuth()
+
+    async function editNote(id:string, payload: unknown) {
+   
+        try {
+            const response = await fetch(`${API_URL}/notes/${id}`,{
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${auth.getAccessToken()}`
+                },
+                body: JSON.stringify(payload)
+            })
+
+
+            const data = await response.json()
+            return data 
+    
+        } catch (error) {
+            console.error(error)
+    
+        }
+    }
+    
 
     const [form, setForm] = useState({
         title: props.note.title,
@@ -20,7 +47,7 @@ const EditNoteModal = (props) =>{
 
     async function handleGuardar(){
         try {
-            const id = props.note._id
+            const id = props.note.id
            await editNote(id, form)
            props.onEdit()
         } catch (error) {
@@ -30,6 +57,9 @@ const EditNoteModal = (props) =>{
     
     return(
         <>
+
+     
+
         <Modal isOpen ={props.isOpen } onAccept={handleGuardar} onClose={props.onClose} title="Editar nota">
         
         <div className="formGroup">   

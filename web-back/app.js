@@ -31,8 +31,8 @@ app.use("/api/signup", SignUp)
 app.use("/api/login", Login)
 app.use("/api/signout", SignOut)
 app.use("/api/refresh-token", RefreshToken)
-app.use("/api/perfil",   AuthenticateToken,   Perfil) 
-app.use("/api/notes",  /* AuthenticateToken, */ Notes  ) 
+app.use("/api/perfil", AuthenticateToken,    Perfil) 
+app.use("/api/notes", AuthenticateToken,    Notes  ) 
 
 
 

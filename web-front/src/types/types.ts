@@ -19,6 +19,12 @@ export interface AuthResponse {
     username: string;
     image: string;
     id: string;
+    notes:{
+      id: string;
+      title: string;
+      description: string;
+      favorite: string;
+    }
   }
 
   export interface Note {
@@ -26,7 +32,10 @@ export interface AuthResponse {
     title: string;
     description: string;
     created_at: string,
-    updated_at: string
+    updated_at: string,
+    user: string
+    id: string;
+    favorite: boolean;
   }
   
   export interface AccessTokenResponse {

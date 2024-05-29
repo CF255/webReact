@@ -10,8 +10,7 @@ import VisibleEditarPerfil from "../components/Perfil/VisibleEditarPerfil";
 import VisibleImagenPerfil from "../components/Perfil/VisibleImagenPerfi";
 import VisibleimgPortada from "../components/Perfil/VisibleimgPortada";
 import { Link, useParams } from "react-router-dom";
-import { useAuth } from "../auth/AuthProvider";
-
+import DescriptionIndi from "../components/Perfil/DescriptionIndi";
 
 
 
@@ -20,10 +19,9 @@ import { useAuth } from "../auth/AuthProvider";
 export default function Perfil(){
     
    const {users} = useUsers() 
-   const auth = useAuth()
 
    const id = useParams().id
-  const user = users.find(a => a._id === String(id))
+  const user = users.find(a => a.id === String(id))
 
 
     return(
@@ -46,14 +44,14 @@ export default function Perfil(){
                 <div className="perfil-usuario-bio">
                 
                    <NamePerfils users={users}/>
-                    <p className="nombre-usuario">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolor atque, exercitationem quod harum, fugiat non similique id perspiciatis suscipit nisi, qui repudiandae ducimus rerum sint vitae eligendi hic iure.</p>
+                     <DescriptionIndi/>
 
                     <div className="perfil-usuario-acciones">
                     
                   <button className="btn-acciones-usuario">accion1</button>
                   <button className="btn-acciones-usuario">accion2</button>
                   <button className="btn-acciones-usuario">
-                  <Link className="btn-acciones-usuario" style={{ textDecoration: "none"}} to={`/perfil/notes/${user?._id}`}>Notes</Link>
+                  <Link className="btn-acciones-usuario" style={{ textDecoration: "none"}} to={`/perfil/notes/${user?.id}`}>Notes</Link>
 
                   </button>
  

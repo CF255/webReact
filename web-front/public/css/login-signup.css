@@ -1,9 +1,4 @@
-/* *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
- */
+
 body{
     transition: all .6s ease;
 }
@@ -106,7 +101,6 @@ form.sign-in-form{
 
 form.sign-up-form{
     z-index: 1;
-  /*  opacity: 0; */
 }
 
 
@@ -335,7 +329,7 @@ transform: translateX(800px);
     justify-content: center;
     align-items: center;
     border-radius: 3px;
-    content: 'Seleccionar'; /* testo por defecto */
+    content: 'Seleccionar'; 
     position: absolute;
     left: 0;
     right: 0;

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthResponse, AuthResponseError } from "../types/types";
@@ -6,7 +6,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faUser, faLock, faUserNinja, faImage} from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faGithub, faGoogle, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import "../../public/css/login-signup.css"
-import logoperfil from '../../public/img/logoperfil.png'
 
 export default function Signup() {
 
@@ -81,7 +80,7 @@ setForm ({...form, [e.target.name]: file})
 
       setForm ({...form, [e.target.name]: e.target.value})
     }
-    
+  
 
     if(!e.target.files) return;
     setPreview(e.target.files[0])
@@ -135,8 +134,7 @@ if (auth.isAuthenticated) {
    <div className="file-select" id="src-file1" >
   <input type="file" name="image" accept="image/png, image/jpeg" onChange={handlechange}  aria-label="Archivo"></input>
 </div>
-   
-    {/* <input type="file" name="image" accept="image/png, image/jpeg"  onChange={handlechange} placeholder="image"/> */}
+  
     </div>
 
 

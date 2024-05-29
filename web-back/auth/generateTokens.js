@@ -3,7 +3,9 @@ import dotenv from "dotenv"
 dotenv.config()
 
 function sign(payload, isAccessToken) {
+
   console.log("payload", payload);
+
   return jwt.sign(
     payload,
     isAccessToken
@@ -17,11 +19,15 @@ function sign(payload, isAccessToken) {
 }
 
 
+
+
 function generateAccessToken(user) {
   return sign({ user }, true);
 }
 function generateRefreshToken(user) {
   return sign({ user }, false);
 }
+
+
 
 export {generateAccessToken, generateRefreshToken}

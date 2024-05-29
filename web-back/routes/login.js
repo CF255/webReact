@@ -2,6 +2,7 @@ import User from "../schema/user.js"
 import jsonResponse from "../lib/jsonResponse.js";
 import getUserInfo from "../lib/getUserInfo.js";
 import { Router } from 'express'
+import jwt from "jsonwebtoken"
 
 const router = Router();
 
@@ -31,6 +32,7 @@ router.post("/", async function (req, res, next) {
             accessToken,
             refreshToken,
             user: getUserInfo(user),
+            
           })
         );
       } else {
