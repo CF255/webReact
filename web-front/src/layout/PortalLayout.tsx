@@ -62,7 +62,7 @@ import PerfilInformation from "../components/PortalLayout/PerfilInformation";
                         <Link className="aroutes" to="/dasboard">...</Link>
                     </li>
                     <li className="liPortalLayaout ">
-                        <Link className="aroutes"  to="/">...</Link>
+                        <Link className="aroutes"  to={`/perfil/notes/${auth.getUser()?.id }`}>Notas</Link>
                     </li>
                     <li className="liPortalLayaout liperfil">
                     <PerfilInformation />

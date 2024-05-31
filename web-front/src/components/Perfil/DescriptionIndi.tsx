@@ -52,8 +52,8 @@ export default function DescriptionIndi(){
 
       return(
         <>
-         <h1>{fav?.title}</h1>
-        <p>{fav?.description}</p>
+         <h1 className="h1NotesIndi">{fav?.title}</h1>
+        <p className="pNotesIndi">{fav?.description}</p>
         </>
       )
 

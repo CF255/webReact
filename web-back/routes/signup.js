@@ -16,14 +16,14 @@ router.post("/", upload.fields([{name: 'image', maxCount: 1}]),async function (r
   const  body = req.body;
 
   try {
-    
+
     const user = new User();
     const userExists = await user.usernameExists(username);
 
     if (userExists) {
       return res.status(409).json(
         jsonResponse(409, {
-          miss: "username already exists",
+          miss: "Nombre de usuario registrado",
         })
       );
       

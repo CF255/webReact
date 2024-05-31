@@ -5,7 +5,7 @@ import { useUsers } from "../hooks/FetchUsers/useUser";
 import ActionButton from "../components/Notes/ActionButton";
 import CreateNoteModal from "../components/Notes/CreateNoteModal";
 import { NoteFriendsList } from "../components/Notes/NoterFriendsList";
-import { useEffect, useState, version } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
 import {  useParams } from "react-router-dom";
 import { AuthResponse, User } from "../types/types";
@@ -17,8 +17,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 
-
-
 export default function Notes(){
     const [createNotemodalOpen, setCreateNotemodalOpen] = useState(false)
     const [noteToEdit, setNoteToEdit] = useState(null)
@@ -26,46 +24,34 @@ export default function Notes(){
     const [deleteResponse, setDeleteResponse] = useState("");
     const [ editeNoteResponse, setEditeNoteResponse] = useState("");
     const [ createNoteResponse, setCreateNoteResponse] = useState("");
-  
-    const auth = useAuth()
-     const id = useParams().id 
-    const n = notes.find(a => a.id === String(id))
-   const note = n?.notes
-
-   const fav = note?.find((fav)=> fav.favorite === true)
-   console.log(fav)
-
+    const [visiblestartactive, setVisiblestartactive] = useState(true);
+    const [visiblestartDesactive, setVisiblestartDesactive] = useState(false); 
  
+    const {users} = useUsers()  
+    const auth = useAuth()
+    const id = useParams().id 
+    const n = notes.find(a => a.id === String(id))
+    const note = n?.notes
 
-   const [visiblestartactive, setVisiblestartactive] = useState(true);
-   const [visiblestartDesactive, setVisiblestartDesactive] = useState(false); 
+    const fav = note?.find((fav)=> fav.favorite === true) || 'vacio'
 
-
-   useEffect(() =>{
+useEffect(() =>{
     getnote()
-
-    comprobar()
+  
 }, [])
 
-
-
+setTimeout(() => {
+    comprobar()
+}, 10);
 
 function comprobar(){
 
-   
-        if(fav === undefined ){
+    if(fav === 'vacio'){
             setVisiblestartDesactive(true)
-           }else{
+        }else{
             setVisiblestartDesactive(false)
-           }
-
-   
+        } 
 }
-
-
-
-
-
 
    async function addfav(id: string) {
         
@@ -84,36 +70,24 @@ function comprobar(){
     } catch (error) {
         console.log(error)
     }
-
-    
 } 
-
 
    async function handlestarDesactive (id: any){
     await addfav(id)
     setVisiblestartDesactive(true) 
-    /* setVisiblestartactive(false) */
     getnote()
 }
 
-
 async function handlestarActive (id: any){
     await addfav(id)
-   /*  setVisiblestartactive(true) */
     setVisiblestartDesactive(false) 
    getnote()
-   
-   
 }
-
-  
-
 
    function istrue(favorite: string, id: any){
 
-
     if(favorite === true){
-
+        
         return (
         <>
          <div className="cardHeaderNote">
@@ -123,7 +97,6 @@ async function handlestarActive (id: any){
     }else {
         return(
             <>
-           
             <div className="cardHeaderNote">
               {!!visiblestartDesactive &&  <button onClick={() =>handlestarActive(id)}  className="startdesactive" ><FontAwesomeIcon  icon={faStar}/></button>}
               </div>
@@ -132,7 +105,7 @@ async function handlestarActive (id: any){
     }
    }
 
-     async function handleOnCreate(){
+    async function handleOnCreate(){
     setCreateNotemodalOpen(false)
 
     setCreateNoteResponse('Nueva nota')
@@ -144,9 +117,6 @@ async function handlestarActive (id: any){
     await getnote()
     }
  
-    const {users} = useUsers()  
-
-   
  async function getNotes(){
 
     try {
@@ -268,24 +238,21 @@ async function deleteNote(id:string) {
 
              <div className="cardNoteGrid">
              {note?.map((n)=>(
-            <CardNote
-            key={n.id} 
-           title={n.title} 
-           descripcion={n.description}
-           favorite={istrue(n.favorite, n.id)}
-            onEdit={() => handleOnEditNote(n)}
-            onRemove={() =>handleOnRemoveNote(n.id)}  
-            
-           />
+             <CardNote
+             key={n.id} 
+             title={n.title} 
+             descripcion={n.description}
+             favorite={istrue(n.favorite, n.id)}
+             onEdit={() => handleOnEditNote(n)}
+             onRemove={() =>handleOnRemoveNote(n.id)}  
+             />
       ))} 
             </div>  
-             
             <CreateNoteModal 
             isOpen={createNotemodalOpen} 
             onClose={() => setCreateNotemodalOpen(false)}
             onCreate={handleOnCreate}
             />
-
 
             {noteToEdit != null &&
             <EditNoteModal 

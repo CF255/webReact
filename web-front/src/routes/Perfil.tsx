@@ -13,9 +13,6 @@ import { Link, useParams } from "react-router-dom";
 import DescriptionIndi from "../components/Perfil/DescriptionIndi";
 
 
-
-
-
 export default function Perfil(){
     
    const {users} = useUsers() 
@@ -51,7 +48,7 @@ export default function Perfil(){
                   <button className="btn-acciones-usuario">accion1</button>
                   <button className="btn-acciones-usuario">accion2</button>
                   <button className="btn-acciones-usuario">
-                  <Link className="btn-acciones-usuario" style={{ textDecoration: "none"}} to={`/perfil/notes/${user?.id}`}>Notes</Link>
+                  <Link className="btn-acciones-usuario" style={{ textDecoration: "none"}} to={`/perfil/notes/${user?.id}`}>Notas</Link>
 
                   </button>
  
@@ -75,9 +72,7 @@ export default function Perfil(){
                 
                
                 <VisibleFooter/> 
-          
-
-      
+        
                 
             </div>
         </section>

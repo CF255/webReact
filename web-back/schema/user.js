@@ -49,7 +49,6 @@ UserSchema.pre("save", function (next) {
   }
 });
 
-
 UserSchema.methods.usernameExists = async function (username) {
   const result = await mongoose.model("User").find({ username: username });
   return result.length > 0;

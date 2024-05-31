@@ -4,7 +4,6 @@ import log from "../lib/Trace.js";
 import User from "../schema/user.js";
 import getTokenFromHeader from "../auth/getTokenFromHeader.js";
 import { Router } from 'express'
-import note from "../schema/note.js";
 
 
 const router = Router();
@@ -63,17 +62,6 @@ router.get('/:id', async (request, response) => {
   response.json(user.toJSON())
 })
 
-router.get('/:id/fav', async (req, res) => {
-  const user = await User.findById(req.params.id).populate('notes', {
-    title: 1,
-    description: 1,
-    favorite: 1
-  })
-  const note = user.notes
-  const fav = note
-  res.json(fav) 
-})
-
 
 router.put("/:id/:newname/:newusername/:newpassword", async function(req, res, next ) {
   
@@ -87,6 +75,7 @@ router.put("/:id/:newname/:newusername/:newpassword", async function(req, res, n
   
     if (userExists) {
       
+      console.log('llega')
       return res.status(409).json(
         jsonResponse(409, {
           miss: "username already exists",
