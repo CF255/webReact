@@ -4,6 +4,7 @@ import {SlideShow, Slide, TextSlide} from "../components/SlideShow/SlideShow";
 import '../../public/css/home.css'
 import '../../public/css/slideshow.css'
 import img2 from '/img/img2.jpg'
+import messageiconmini from '/img/messagesiconmini.png'
 import imgminilogoapipelis from '/img/minilogoapipelis.jpg'
 import {Carrousel,CardSlide, CardTextSlide} from "../components/Carrousel/Carrousel";
 import '../../public/css/carrousel.css'
@@ -14,12 +15,13 @@ import imglogogiphy from '/img/imglogogiphy.jpg'
 import imgminilogogiphi from '/img/imgminilogogiphy.jpg'
 import { Link } from "react-router-dom";
 import { PortalLayout } from "../layout/PortalLayout";
+import { useAuth } from "../auth/AuthProvider";
 
 
 
 export default function Dashboard(){
 
-
+const auth = useAuth()
 
 
 
@@ -101,10 +103,10 @@ export default function Dashboard(){
 
 
             <CardSlide className="card">
-                <div className="img"><img src={img2} alt="img" /></div>
-                <CardTextSlide>nombre</CardTextSlide>
+                <div className="img"><img src={messageiconmini} alt="img" /></div>
+                <CardTextSlide>Messages</CardTextSlide>
                
-                <Link to={'/dashboard'}>
+                <Link  to={`/messages/${auth.getUser()?.id}`}>
                 <button className='btnentrar'>entrar</button>
                 </Link>
             </CardSlide>

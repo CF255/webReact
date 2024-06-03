@@ -19,13 +19,15 @@ export interface AuthResponse {
     username: string;
     image: string;
     id: string;
-    notes:{
-      id: string;
-      title: string;
-      description: string;
-      favorite: string;
-    }
+    notes:[Note]
   }
+/* 
+  {
+    id: string;
+    title: string;
+    description: string;
+    favorite: string;
+  } */
 
   export interface Note {
     _id: string;

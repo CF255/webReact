@@ -37,12 +37,13 @@ export default function Notes(){
 
 useEffect(() =>{
     getnote()
-  
 }, [])
 
 setTimeout(() => {
     comprobar()
 }, 10);
+ 
+
 
 function comprobar(){
 
@@ -52,6 +53,7 @@ function comprobar(){
             setVisiblestartDesactive(false)
         } 
 }
+
 
    async function addfav(id: string) {
         

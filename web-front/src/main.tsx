@@ -14,6 +14,8 @@ import ApiPelis from './routes/ApiPelis.jsx'
 import Giffy from './routes/Giffy.jsx'
 import Perfil from './routes/Perfil.jsx'
 import Notes from './routes/Notes.tsx'
+import Messages from './routes/Messages.jsx'
+
 
 
 const router = createBrowserRouter([
@@ -57,6 +59,10 @@ const router = createBrowserRouter([
     {
       path:`/perfil/notes/:id`,
       element:<Notes />
+    },
+    {
+      path:`/messages/:id`,
+      element:<Messages />
     }
   ]
 }
