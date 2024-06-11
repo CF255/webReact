@@ -21,13 +21,6 @@ export interface AuthResponse {
     id: string;
     notes:[Note]
   }
-/* 
-  {
-    id: string;
-    title: string;
-    description: string;
-    favorite: string;
-  } */
 
   export interface Note {
     _id: string;
@@ -38,6 +31,13 @@ export interface AuthResponse {
     user: string
     id: string;
     favorite: boolean;
+  }
+
+  export interface Chats {
+    message: string;
+    room: string;
+    author: string;
+    time: string;
   }
   
   export interface AccessTokenResponse {
