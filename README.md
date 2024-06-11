@@ -2,34 +2,34 @@
 # WebReact
 
 <p>
-Proyecto creado con el propósito  de aprendizaje, dicho proyecto no cuenta con una direccion especifica de lo que es la pagina, su porposito es el de estudiar diversos temas de frontend  y backend. 
+Proyecto creado con el propósito de aprendizaje. Dicho proyecto no cuenta con una dirección específica de lo que es la página. Su propósito es el de estudiar diversos temas de frontend y backend.
 </p>
 
 
-## Installation
+## Instalación 
 <p>
-Clonar el repositorio, luego en una terminal en la carpeta del frontend ejecutar `npm install`  para instalar las dependencias del proyecto. 
+Clona el repositorio, luego en una terminal en la carpeta del frontend ejecuta `npm install` para instalar las dependencias del proyecto.
 </p>
 
 
-##Despliege
+## Despliege
 
-###Frontend
+#### Frontend
 <p>
 En una terminal en la carpeta de frontend ejecutar `npm run dev`  para comenzar a correr Vite. 
 </p>
 
 
-###Backend
+#### Backend
 
 <p>
 En una terminal en la carpeta de backend ejecutar `npx nodemon app`  para comenzar a correr el servidor. 
 </p>
 
 
-##Login
+## Login
 <p>
-Es posible iniciar sesión introduciendo "admin" como usuario y contraseña. tambien podria crear su propia cuenta en la pagina de signup.
+Es posible iniciar sesión ingresando "admin" como usuario y contraseña. También puede crear su propia cuenta en la página de registro.
 </p>
 
 
