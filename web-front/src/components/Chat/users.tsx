@@ -2,25 +2,19 @@ import "/public/css/chatmessages.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { User } from "../../types/types";
-import { useEffect, useState } from "react";
-import io from "socket.io-client"
+import { useEffect } from "react";
 
-const socket = io.connect("http://localhost:3100")
 
-export default function Users({ users}:{socket:any,  users: User[]}){
+export default function Users({joinRoom, setUsername, users, setRoom}:{setRoom: any ,joinRoom:any, setUsername:any, users: User[]}){
 
-    const [username, setUsername] = useState('')
-    const [room, setRoom] = useState('')
-    const [name, setname] = useState('')
-    console.log(users)
+    useEffect(()=>{
+        setUsername("null")
+        setRoom("0")
+        
+    },[])
 
-    const joinRoom = () =>{
-        if(username != "" && room != ''){
-            socket.emit("join_room", room)
-    
-        }
-    } 
-   
+
+joinRoom()
 
     return(
        <>
@@ -37,10 +31,15 @@ export default function Users({ users}:{socket:any,  users: User[]}){
            <div className="showUsersChat">
             
            {users.map((user)=>(
-            <>
-            <button onClick={joinRoom}  className='articlePerfilChat' key={user.id}>
+
+            <button onClick={()=>{
+                setUsername(user.name)
+                setRoom("1") 
+      
+                 joinRoom()
+                 }}  className='articlePerfilChat' key={user.id} >
             
-        
+    
           <img className='imgperfilChat' src={user.image}></img>
         
 
@@ -51,23 +50,19 @@ export default function Users({ users}:{socket:any,  users: User[]}){
           </div>
 
           
-
+          <div className="linePerfilChat"></div>
               </button>
-              <div  className="linePerfilChat"></div>
-              </>
+              
+           
+             
+         
           ))}  
           
           
            </div>
 
 
-
-            
-
-            <input type="text" placeholder="ID sala"
-            onChange={e => setRoom(e.target.value)}/>
-
-           {/*  <button onClick={joinRoom}>unirme</button>  */}
+             
             </div>
 
             

@@ -16,6 +16,19 @@ export default function Messages(){
     const [showChat, setShowChat] = useState(false)
 
     
+    const [username, setUsername] = useState('')
+    const [room, setRoom] = useState('')
+    const [name, setname] = useState("")
+    console.log(users)
+
+    const joinRoom = () =>{
+        if(username != "" && room != ""){
+            socket.emit("join_room", room)
+           
+    
+        }
+    } 
+   
 
     return(
        <PortalLayout>
