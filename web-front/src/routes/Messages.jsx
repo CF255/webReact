@@ -19,6 +19,7 @@ export default function Messages(){
     const [username, setUsername] = useState('')
     const [room, setRoom] = useState('')
     const [name, setname] = useState("")
+    const [imagePerfil, setImagePerfil] = useState("")
     console.log(users)
 
     const joinRoom = () =>{
@@ -38,12 +39,12 @@ export default function Messages(){
        <div className="chatOnline">
        {/* { !showChat ?( */}
 
-            <Users users={users} joinRoom={joinRoom} socket={socket} setUsername={setUsername} setRoom={setRoom}/>
+            <Users users={users} joinRoom={joinRoom} socket={socket} setImagePerfil={setImagePerfil} setUsername={setUsername} setRoom={setRoom}/>
 
         {/* ) : ( */}
 
             <div className="chat-messages-container">
-            <Chat socket={socket} username={username} room={room}/>
+            <Chat socket={socket} username={username} imagePerfil={imagePerfil} room={room}/>
             </div>
        {/*  )} */}
 

@@ -17,6 +17,12 @@ const UserSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Note'
     }
+  ],
+  cardslide: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'CardSlide'
+    }
   ]
 }, 
 {

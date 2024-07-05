@@ -33,11 +33,13 @@ export default function Notes(){
     const n = notes.find(a => a.id === String(id))
     const note = n?.notes
 
+  
     const fav = note?.find((fav)=> fav.favorite === true) || 'vacio'
 
 useEffect(() =>{
     getnote()
 }, [])
+
 
 setTimeout(() => {
     comprobar()
@@ -86,7 +88,7 @@ async function handlestarActive (id: any){
    getnote()
 }
 
-   function istrue(favorite: string, id: any){
+   function istrue(favorite: any, id: any){
 
     if(favorite === true){
         
@@ -156,7 +158,7 @@ async function handlestarActive (id: any){
    await getnote()
     }
 
-    function handleOnEditNote(n){
+    function handleOnEditNote(n:any){
       setNoteToEdit(n)
       
       

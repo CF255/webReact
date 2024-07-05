@@ -20,6 +20,7 @@ export interface AuthResponse {
     image: string;
     id: string;
     notes:[Note]
+    cardslide:[CardSlide]
   }
 
   export interface Note {
@@ -31,6 +32,16 @@ export interface AuthResponse {
     user: string
     id: string;
     favorite: boolean;
+  }
+
+  export interface CardSlide{
+    _id: string;
+    id: string;
+    cardslide: boolean,
+    tictac: boolean,
+    apipelis: boolean,
+    giffy: boolean,
+    messages: boolean
   }
 
   export interface Chats {

@@ -3,6 +3,7 @@ import  jsonResponse from "../lib/jsonResponse.js";
 import { Router } from 'express'
 import {upload} from "../config/multer.js";
 import { uploadFile } from "../util/uploadFile.js";
+import CardSlide from "../schema/cardslide.js";
 const router = Router();
 
 
@@ -36,6 +37,24 @@ router.post("/", upload.fields([{name: 'image', maxCount: 1}]),async function (r
           name: body.name,
           image: downloadURL
         })
+
+        const capaslide = new CardSlide({
+          cardslide: false,
+          tictac:false,
+          apipelis: false,
+          giffy: false,
+          messages: false,
+          user: user._id
+        });
+
+        try {
+          const saveslide = await capaslide.save();
+        user.cardslide = user.cardslide.concat(saveslide._id);
+        await user.save();
+  
+        } catch (error) {
+          console.error(error)
+        }
         
         user.save() 
     
@@ -44,7 +63,6 @@ router.post("/", upload.fields([{name: 'image', maxCount: 1}]),async function (r
             sucess: "Usuario creado",
           })
         );
-
 
       
     }

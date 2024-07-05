@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import logoperfil from "/public/img/logoperfil.png"
+
 import { Chats } from "../../types/types";
 
 
 
-const Chat = ({socket, username, room}:{socket:any, username:any, room:any}) =>{
+const Chat = ({socket, username, room, imagePerfil}:{imagePerfil:any,socket:any, username:any, room:any}) =>{
 
     const [currentMessage, setCurrentMessage] = useState('')
     const [messagesList, setMessageList] = useState<Chats[] | []>([])
@@ -23,6 +23,7 @@ const Chat = ({socket, username, room}:{socket:any, username:any, room:any}) =>{
 
             await socket.emit("send_message", info)
             setMessageList((list)=>[...list, info])
+            console.log(info.author +":" + info.message)
             setCurrentMessage('')
         }
     }
@@ -49,7 +50,7 @@ const Chat = ({socket, username, room}:{socket:any, username:any, room:any}) =>{
                     <strong style={{ opacity: username === "null" ? 0 : 1}} className='stnombreperfilchat'>{`${username}`}</strong>
                 </div>
 
-                <img className='imgperfilchat' src={logoperfil}></img>
+                <img className='imgperfilchat' src={`${imagePerfil}`}></img>
              
                 
                </header>

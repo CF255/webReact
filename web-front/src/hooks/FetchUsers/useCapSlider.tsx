@@ -5,13 +5,13 @@ import { useAuth } from "../../auth/AuthProvider";
 
 
 
-export function useUsers  () {
+export function useCapSlider  () {
 
     const [users, setUsers] = useState<User[] | []>([])
     const auth = useAuth()
 
     let fetchUsers = () =>{
-        fetch(`${API_URL}/perfil/users`,{
+        fetch(`http://localhost:3100/api/adminpage/capacardslide`,{
             headers: {
               "Content-Type": "aplication/json",
               Authorization: `Bearer ${auth.getAccessToken()}`,
@@ -20,15 +20,13 @@ export function useUsers  () {
             .then((data: {users: User[]}) => setUsers(data.users))
     }
 
-
     useEffect(() =>{
       fetchUsers()
     }, [])
 
+
     return (
       {users, refetchUsers: fetchUsers}
       
-          
-       
     )
 }

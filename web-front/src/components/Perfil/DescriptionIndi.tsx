@@ -45,6 +45,7 @@ export default function DescriptionIndi(){
         }
       } 
       
+      
        async function getnote() {
         const notes = await getNotes()
         setNotes(notes)

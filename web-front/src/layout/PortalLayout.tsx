@@ -45,6 +45,17 @@ import PerfilInformation from "../components/PortalLayout/PerfilInformation";
     }
 
 
+    const AdminPage = () =>{
+        if(auth.getUser()?.username === "admin"){
+            return(
+                <li className="liPortalLayaout">
+                        <Link className="aroutes" to={`/adminPage/${auth.getUser()?.id }`}>Admin Page</Link>
+                    </li>
+            )
+        }
+    }
+
+
 
    
 
@@ -53,17 +64,20 @@ import PerfilInformation from "../components/PortalLayout/PerfilInformation";
         <div className="headerfixed">
         <header className="navcontainer">
 
-            <Link to={"/dashboard"}>
+            
+
+            <Link to={`/dashboard`}>
             <img className="logo" src="/img/logo.png" alt="" />
             </Link>
             <nav className="navPortalLayaout">
                 <ul className={`links ${clicked? 'active' : ''}`}>
                     <li className="liPortalLayaout">
                         <Link className="aroutes" to="/dasboard">...</Link>
-                    </li>
+                    </li>                    
                     <li className="liPortalLayaout ">
                         <Link className="aroutes"  to={`/perfil/notes/${auth.getUser()?.id }`}>Notas</Link>
                     </li>
+                    <AdminPage/>
                     <li className="liPortalLayaout liperfil">
                     <PerfilInformation />
                     </li>

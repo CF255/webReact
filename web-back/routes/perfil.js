@@ -25,7 +25,7 @@ router.get("/users", async (req, res, )=> {
       description: 1,
       favorite: 1
     })
-    /* res.json(users) */
+    
      res.status(200).json({users}) 
 
 

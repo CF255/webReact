@@ -1,6 +1,5 @@
 import { useState } from "react"
 import Modal from "./common/Modal"
-/* import { editNote } from "../../service/Note/noteservices" */
 import { API_URL } from "../../auth/constants"
 import { useAuth } from "../../auth/AuthProvider"
 

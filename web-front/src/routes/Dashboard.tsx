@@ -13,9 +13,11 @@ import imglogotresenraya from '/img/tresenraya.png'
 import imgapipelis from '/img/logoapipelis.jpg'
 import imglogogiphy from '/img/imglogogiphy.jpg'
 import imgminilogogiphi from '/img/imgminilogogiphy.jpg'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PortalLayout } from "../layout/PortalLayout";
 import { useAuth } from "../auth/AuthProvider";
+import { useCapSlider } from "../hooks/FetchUsers/useCapSlider";
+
 
 
 
@@ -23,15 +25,30 @@ export default function Dashboard(){
 
 const auth = useAuth()
 
+        const {users} = useCapSlider() 
+        const id = auth.getUser()?.id
+
+        const u = users.find(a => a.id === String(id))
+        const card = u?.cardslide.find((car)=> car.id)
+
+         const cardId = card?.cardslide
+         const visitictac = card?.tictac
+         const visiapipelis = card?.apipelis
+         const visigiffy = card?.giffy
+         const visimessages = card?.messages
+     
 
 
     return(
         
        <>
+
+
         <PortalLayout>
              <main>
 
                 {/* slideshow */}
+
                 
                 <SlideShow controles={true} autoplay={true}>
                 <Slide className="slide">
@@ -69,12 +86,18 @@ const auth = useAuth()
                 </SlideShow>
             {/* fin slideshow */}
 
-                
+          
+    
 
                 {/* carrousel card */}
+
+                {!!cardId && <>
+
                 <p className="ptitulo">Card slide</p>
 
                 <Carrousel controles={true}>
+
+                {!! visitictac && <>
                 <CardSlide className="card">
                 <div className="img"><img src={imgminilogotresenraya} alt="img"  /></div>
                 <CardTextSlide>Tic Tac Toe</CardTextSlide>
@@ -82,7 +105,9 @@ const auth = useAuth()
                 <button className='btnentrar'>entrar</button>
                 </Link>
             </CardSlide>
+             </>}
 
+                    {!!visiapipelis && <>
             <CardSlide className="card">
                 <div className="img"><img src={imgminilogoapipelis} alt="img" /></div>
                 <CardTextSlide>Api Pelis</CardTextSlide>
@@ -91,8 +116,9 @@ const auth = useAuth()
                 <button className='btnentrar'>entrar</button>
                 </Link>
             </CardSlide>
-            
+            </>}
   
+            {!!visigiffy && <>
             <CardSlide className="card">
                 <div className="img"><img src={imgminilogogiphi} alt="img" /></div>
                 <CardTextSlide>Giffy</CardTextSlide>
@@ -100,8 +126,10 @@ const auth = useAuth()
                 <button className='btnentrar'>entrar</button>
                 </Link>
             </CardSlide>
+            </>}
 
 
+                {!!visimessages && <>
             <CardSlide className="card">
                 <div className="img"><img src={messageiconmini} alt="img" /></div>
                 <CardTextSlide>Messages</CardTextSlide>
@@ -110,6 +138,8 @@ const auth = useAuth()
                 <button className='btnentrar'>entrar</button>
                 </Link>
             </CardSlide>
+            </>}
+            
             <CardSlide className="card">
                 <div className="img"><img src={img2} alt="img" /></div>
                 <CardTextSlide>nombre</CardTextSlide>
@@ -128,6 +158,7 @@ const auth = useAuth()
             </CardSlide>
                 </Carrousel>
 
+                </>}
                 {/* fin carrousel card */}
                 
 

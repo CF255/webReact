@@ -1,8 +1,10 @@
 
-import { Router, request } from 'express'
+import { Router } from 'express'
 import Note from "../schema/note.js";
 import User from "../schema/user.js";
 import jsonResponse from '../lib/jsonResponse.js';
+
+
 
 const router = Router();
 
@@ -35,6 +37,8 @@ router.post('/' ,async (req, res) =>{
         favorite: false,
         user: user._id
       });
+
+  
 
       try {
         const saveNote = await note.save();
@@ -85,7 +89,8 @@ router.put('/fav/:id', async(req, res)=>{
   try {
       
       const favRef = await Note.findById(req.params.id)
-
+      console.log(req.params.id)
+      
       const note = await Note.findOneAndUpdate(
         {_id: req.params.id},
         {favorite: !favRef.favorite}

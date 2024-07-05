@@ -8,6 +8,8 @@ export function UserList({users}:{users: User[]}){
 
     if(!users) return null
 
+    console.log(users)
+
     const fullName = (user: User) => `${user.name} ${user.username}`
 
     return (

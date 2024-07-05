@@ -12,9 +12,6 @@ router.get("/",  (req, res, )=> {
 
   res.json(jsonResponse(200, req.user));
 
- 
-
-
 });
 
 

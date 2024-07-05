@@ -22,7 +22,7 @@ export default function Login(){
     const goTo = useNavigate()
 
     if(auth.isAuthenticated){
-                        return <Navigate to="/dashboard"/> 
+    return <Navigate to="/dashboard"/> 
        
     }
 
@@ -51,7 +51,7 @@ export default function Login(){
 
                  
                 
-                        goTo("/dashboard")
+                        goTo(`/dashboard`)
                 }
 
                
@@ -88,8 +88,6 @@ export default function Login(){
     return(
         <>
 
-    
-
          <div className="container">
             <div className="forms-container">
                 <div className="signin-signup">
@@ -108,6 +106,8 @@ export default function Login(){
             <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username"></input>
            </div>
 
+        
+           <img src="../" alt="" />
            <div className="input-field">
            <div className="input-field-i">
            <FontAwesomeIcon style={{color: '#acacac'}} icon={faLock}/>

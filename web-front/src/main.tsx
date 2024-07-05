@@ -15,6 +15,7 @@ import Giffy from './routes/Giffy.jsx'
 import Perfil from './routes/Perfil.jsx'
 import Notes from './routes/Notes.tsx'
 import Messages from './routes/Messages.jsx'
+import AdminPage from './routes/AdminPage.tsx'
 
 
 
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
     {
       path:`/messages/:id`,
       element:<Messages />
+    },
+    {
+      path:`/adminpage/:id`,
+      element:<AdminPage />
     }
   ]
 }
