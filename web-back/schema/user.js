@@ -4,7 +4,7 @@ import { generateAccessToken, generateRefreshToken } from "../auth/generateToken
 import Token from "../schema/token.js"
 import getUserInfo from "../lib/getUserInfo.js";
 
-
+/* hola */
 
 const UserSchema = new mongoose.Schema({
   id: { type: Object },
