@@ -5,7 +5,6 @@ import User from "../schema/user.js";
 import jsonResponse from '../lib/jsonResponse.js';
 
 
-
 const router = Router();
 
 router.get("/", async  (req, res, )=> {

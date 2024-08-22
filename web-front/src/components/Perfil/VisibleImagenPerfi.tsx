@@ -13,8 +13,7 @@ export default function  VisibleImagenPerfil () {
     if(id === auth.getUser()?.id){
       return(
         <>
-         
-
+      
          <button className="boton-avatar"><FontAwesomeIcon style={{color: '#000'}} icon={faPen}/> </button>
         
         </>
